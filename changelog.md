@@ -1,13 +1,15 @@
 Changelog
 =========
 
+## v0.2
+* Table jointure N-N pour oeuvre-auteur
 
 
 ## v0.1
-* sql database / create table files
+* sql database / fichiers create table 
 
 
 ## v0.0
-* init
-* html template
-* http server test 
+* initialisation
+* template html 
+* test server http  

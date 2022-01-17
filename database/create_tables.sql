@@ -12,10 +12,18 @@ CREATE TABLE T_OEUVRE_OVR (
 	ovr_id 			INT 			PRIMARY KEY,
 	ovr_titre 		VARCHAR(256) 	NOT NULL,
 	ovr_date 		DATE,
-	aut_id 			INT,
+);
 
+
+CREATE TABLE TJ_EXPOSANTS (
+	ovr_id 			INT				NOT NULL,
+	aut_id 			INT 			NOT NULL,
+
+	PRIMARY KEY(ovr_id, aut_id),
+	FOREIGN KEY(ovr_id) REFERENCES T_OEUVRE_OVR(ovr_id),
 	FOREIGN KEY(aut_id) REFERENCES T_AUTEUR_AUT(aut_id)
 );
+
 
 
 CREATE TABLE T_VISITEUR_VIS (
@@ -33,7 +41,7 @@ CREATE TABLE T_USER_USR (
 CREATE TABLE T_NEWS_NEW (
 	new_id 			INT 			PRIMARY KEY,
 	new_date		DATE 			NOT NULL,
-	new_file		VARCHAR(256) 	NOT NULL,
+	new_file		VARCHAR(256) 	NOT NULL, # fichier xml avec le contenu de l'article
 	usr_login 		VARCHAR(32) 	NOT NULL,
 
 	FOREIGN KEY(usr_login) REFERENCES T_USER_USR(usr_login)
