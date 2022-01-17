@@ -2,7 +2,8 @@ Changelog
 =========
 
 ## v0.2
-* Table jointure N-N pour oeuvre-auteur
+* visiteur et livre d'or dans la bdd
+* modèle de bdd conforme aux spécifications
 
 
 ## v0.1
@@ -11,5 +12,5 @@ Changelog
 
 ## v0.0
 * initialisation
-* template html 
-* test server http  
+* template html
+* test server http 
