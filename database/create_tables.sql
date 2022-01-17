@@ -1,6 +1,6 @@
 CREATE TABLE T_EXPO_EXP (
-	debut 			DATE 			NOT NULL,
-	fin 			DATE 			NOT NULL
+	exp_debut		DATE 			NOT NULL,
+	exp_fin			DATE 			NOT NULL
 );
 
 CREATE TABLE T_AUTEUR_AUT (
