@@ -48,7 +48,7 @@ CREATE TABLE T_COMPTE_CPT (
 	cpt_mdp			INT 			NOT NULL, #mot de passe haché
 );
 
-CREATE TABLE T_PROFILE_PRO (
+CREATE TABLE T_PROFIL_PRO (
 	cpt_login 		VARCHAR(32) 	PRIMARY KEY,
 	pro_nom			VARCHAR(32),
 	pro_prenom 		VARCHAR(32),
