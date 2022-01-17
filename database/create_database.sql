@@ -1,1 +1,1 @@
-CREATE OR REPLACE DATABASE netgallery;
+CREATE DATABASE netgallery;
