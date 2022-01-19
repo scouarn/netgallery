@@ -90,7 +90,7 @@ CREATE TABLE T_COMMENTAIRE_COM (
 	com_id 			INT 			PRIMARY	KEY AUTO_INCREMENT,
 	com_date 		DATE 			NOT NULL,
 	com_file 		VARCHAR(512)	NOT NULL,
-	vis_id 			INT 			NOT NULL,
+	vis_id 			INT 			UNIQUE NOT NULL,
 
 	FOREIGN KEY(vis_id) REFERENCES T_VISITEUR_VIS(vis_id)
 );
