@@ -1,6 +1,11 @@
 Changelog
 =========
 
+## v0.3
+* Insert des données exposant et oeuvres
+* Choix du template
+
+
 ## v0.2
 * visiteur et livre d'or dans la bdd
 * modèle de bdd conforme aux spécifications
