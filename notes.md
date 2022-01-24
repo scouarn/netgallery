@@ -36,7 +36,7 @@ Jeux mathématiques :
 * tic tac toe matchboxes AI
 
 * ange vs démon
-* chat vs souris
+* chat vs souris : Ben Sparks ??
 * tir complexe
 * fléchettes qui se rétrecissent
 

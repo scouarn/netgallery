@@ -54,7 +54,7 @@ CREATE TABLE T_OEUVRE_OVR (
 	ovr_id 			INT 			PRIMARY KEY AUTO_INCREMENT,
 	ovr_titre 		VARCHAR(64) 	NOT NULL,
 	ovr_date 		DATE,
-	ovr_descr		VARCHAR(512),
+	ovr_descr		VARCHAR(1024),
 	ovr_img			VARCHAR(256)
 
 ) ENGINE=InnoDB;
