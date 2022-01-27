@@ -2,7 +2,7 @@ Changelog
 =========
 
 ## v0.3
-* Insert des données exposant et oeuvres
+* Insertion des données
 * Choix du template
 
 
