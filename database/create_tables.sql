@@ -10,12 +10,14 @@ CREATE TABLE T_PRESENTATION_PRE (
 ) ENGINE=InnoDB;
 
 CREATE TABLE T_COMPTE_CPT (
-	cpt_login 		VARCHAR(32) 	PRIMARY KEY,
-	cpt_mdp			CHAR(32)	 	NOT NULL # md5
+	cpt_login 		VARCHAR(32) 	CHARACTER SET utf8 COLLATE utf8_bin,
+	cpt_mdp			CHAR(32)	 	NOT NULL,
+
+	PRIMARY KEY(cpt_login)
 ) ENGINE=InnoDB;
 
 CREATE TABLE T_PROFIL_PRO (
-	cpt_login 		VARCHAR(64) 	PRIMARY KEY,
+	cpt_login 		VARCHAR(64) 	CHARACTER SET utf8 COLLATE utf8_bin,
 	pro_nom			VARCHAR(64),		
 	pro_prenom 		VARCHAR(64),		
 	pro_email 		VARCHAR(256)	NOT NULL,
@@ -23,22 +25,24 @@ CREATE TABLE T_PROFIL_PRO (
 	pro_role 		ENUM('A','O')	NOT NULL,
 	pro_date 		DATETIME 		NOT NULL,
 
+	PRIMARY KEY(cpt_login),
 	FOREIGN KEY(cpt_login) REFERENCES T_COMPTE_CPT(cpt_login)
 ) ENGINE=InnoDB;
 
 
 CREATE TABLE T_NEWS_NEW (
-	vis_id 			INT 			PRIMARY KEY AUTO_INCREMENT,
+	vis_id 			INT 			AUTO_INCREMENT,
 	new_date		DATETIME		NOT NULL,
 	new_html		VARCHAR(256)	NOT NULL, # fichier html avec le contenu de l'article
-	cpt_login 		VARCHAR(64) 	NOT NULL,
+	cpt_login 		VARCHAR(64) 	CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 
+	PRIMARY KEY(vis_id),
 	FOREIGN KEY(cpt_login) REFERENCES T_COMPTE_CPT(cpt_login)
 ) ENGINE=InnoDB;
 
 
 CREATE TABLE T_EXPOSANT_EXP (
-	exp_id 			INT 			PRIMARY KEY AUTO_INCREMENT,
+	exp_id 			INT 			AUTO_INCREMENT,
 	exp_nom 		VARCHAR(64) 	NOT NULL,
 	exp_prenom 		VARCHAR(64) 	NOT NULL,
 	exp_bio			VARCHAR(512)	NOT NULL,
@@ -46,17 +50,20 @@ CREATE TABLE T_EXPOSANT_EXP (
 	exp_website		VARCHAR(512),
 	exp_img			VARCHAR(256),
 
-	cpt_login		VARCHAR(64)		NOT NULL,
+	cpt_login		VARCHAR(64)		CHARACTER SET utf8 COLLATE utf8_bin NOT NULL ,
+
+	PRIMARY KEY(exp_id),
 	FOREIGN KEY(cpt_login) REFERENCES T_COMPTE_CPT(cpt_login)
 ) ENGINE=InnoDB;
 
 CREATE TABLE T_OEUVRE_OVR (
-	ovr_id 			INT 			PRIMARY KEY AUTO_INCREMENT,
+	ovr_id 			INT 			AUTO_INCREMENT,
 	ovr_titre 		VARCHAR(64) 	NOT NULL,
-	ovr_date 		DATE,
+	ovr_year 		CHAR(4),
 	ovr_descr		VARCHAR(1024),
-	ovr_img			VARCHAR(256)
+	ovr_img			VARCHAR(256),
 
+	PRIMARY KEY(ovr_id)
 ) ENGINE=InnoDB;
 
 
@@ -72,14 +79,15 @@ CREATE TABLE TJ_EXP_OVR (
 
 
 CREATE TABLE T_VISITEUR_VIS (
-	vis_id 			INT 			PRIMARY	KEY AUTO_INCREMENT,
-	vis_mdp			CHAR(32)		NOT NULL,
-	vis_date 		TIMESTAMP		NOT NULL,
+	vis_id 			INT 			AUTO_INCREMENT,
+	vis_mdp			CHAR(15)		NOT NULL,
+	vis_date 		DATETIME		NOT NULL,
 	vis_nom 		VARCHAR(64),
 	vis_prenom 		VARCHAR(64),
 	vis_email 		VARCHAR(256),
-	cpt_login 		VARCHAR(64)		NOT NULL,
+	cpt_login 		VARCHAR(64)		CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 
+	PRIMARY	KEY(vis_id),
 	FOREIGN KEY(cpt_login) REFERENCES T_COMPTE_CPT(cpt_login)
 ) ENGINE=InnoDB;
 
