@@ -1,5 +1,3 @@
-
-
 CREATE TABLE T_PRESENTATION_PRE (
 	pre_debut		DATETIME		NOT NULL,
 	pre_verni		DATETIME		NOT NULL,
@@ -31,12 +29,12 @@ CREATE TABLE T_PROFIL_PRO (
 
 
 CREATE TABLE T_NEWS_NEW (
-	vis_id 			INT 			AUTO_INCREMENT,
+	new_id 			INT 			AUTO_INCREMENT,
 	new_date		DATETIME		NOT NULL,
 	new_html		VARCHAR(256)	NOT NULL, # fichier html avec le contenu de l'article
 	cpt_login 		VARCHAR(64) 	CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 
-	PRIMARY KEY(vis_id),
+	PRIMARY KEY(new_id),
 	FOREIGN KEY(cpt_login) REFERENCES T_COMPTE_CPT(cpt_login)
 ) ENGINE=InnoDB;
 
@@ -100,3 +98,6 @@ CREATE TABLE T_COMMENTAIRE_COM (
 
 	FOREIGN KEY(vis_id) REFERENCES T_VISITEUR_VIS(vis_id)
 ) ENGINE=InnoDB;
+
+
+ALTER TABLE T_COMMENTAIRE_COM ADD com_status ENUM('OK', 'KO') NOT NULL;

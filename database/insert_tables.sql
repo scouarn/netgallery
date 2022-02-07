@@ -1,4 +1,4 @@
-INSERT INTO T_PRESENTATION_PRE VALUES (NOW(), NOW(), NOW(), 'Les jeux mathématiques', 'Bienvenue sur l\'expo en ligne', 'Au café rue des Arpenteurs');
+INSERT INTO T_PRESENTATION_PRE VALUES ('2022-05-01 8:00:00', '2022-05-01 10:00:00', '2022-08-31 17:00:00', 'Les jeux mathématiques', 'Bienvenue sur l\'expo en ligne', 'Au café rue des Arpenteurs');
 
 
 INSERT INTO T_COMPTE_CPT VALUES ('vmarc', MD5('vmarc'));
@@ -47,11 +47,11 @@ INSERT INTO T_VISITEUR_VIS VALUES (NULL, '656565656565656', NOW(), NULL, NULL, N
 INSERT INTO T_VISITEUR_VIS VALUES (NULL, 'AAAAAAAAAAAAAAA', NOW(), NULL, NULL, NULL, 'admin');
 INSERT INTO T_VISITEUR_VIS VALUES (NULL, '555555555555555', NOW(), NULL, NULL, NULL, 'admin');
 
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Super musée !', 1);
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Musée pas terrible', 2);
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'J\'ai bien aimé', 3);
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'C\'était joli', 4);
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Je retournerai', 5);
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Super musée !', 1, 'OK');
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Musée pas terrible', 2, 'OK');
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'J\'ai bien aimé', 3, 'OK');
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'C\'était joli', 4, 'OK');
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Je retournerai', 5, 'OK');
 
 
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Conway', 'John', 'Mathématicien 1937-2020', NULL, NULL, NULL, 'gEstionnaire');
