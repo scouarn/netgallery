@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## v0.4
+* Template nettoyé
+
 ## v0.3
 * Insertion des données
 * Choix du template
