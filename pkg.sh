@@ -13,4 +13,9 @@ fi
 echo "New version is $VERSION" &&
 echo $VERSION > version &&
 
-zip -r "release/v$VERSION.zip" ./*
+
+FILES="database public changelog.md notes.md pkg.sh version"
+zip -r "release/v$VERSION.zip" $FILES
+
+
+
