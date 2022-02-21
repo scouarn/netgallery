@@ -42,7 +42,7 @@ SET @mdp = 'motdepasse';
 SET @nom = 'Marc';
 SET @prenom = 'Valérie';
 SET @email = '';
-SET @role = 'A'
+SET @role = 'A';
 
 INSERT INTO T_COMPTE_CPT VALUES (@login, @mdp);
 INSERT INTO T_PROFIL_PRO VALUES (@login, @nom, @prenom, @email, 'D', @role);
@@ -76,8 +76,8 @@ SET @login = 'vmarc';
 SET @nom = 'Marc';
 SET @prenom = 'Valérie';
 SET @email = '';
-SET @role = 'A'
-SET @status = 'A'
+SET @role = 'A';
+SET @status = 'A';
 
 UPDATE T_PROFIL_PRO
 -- SET pro_nom = @nom

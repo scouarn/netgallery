@@ -78,6 +78,6 @@ LEFT OUTER JOIN T_NEWS_NEW USING(cpt_login);
 
 # 8) b) Right outer join
 SELECT cpt_login, new_id
-FROM T_COMPTE_CPT
-RIGHT OUTER JOIN T_NEWS_NEW USING(cpt_login);
+FROM T_NEWS_NEW
+RIGHT OUTER JOIN T_COMPTE_CPT USING(cpt_login);
 
