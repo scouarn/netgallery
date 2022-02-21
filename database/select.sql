@@ -100,3 +100,101 @@ SELECT * FROM T_PROFIL_PRO JOIN T_COMPTE_CPT USING(cpt_login);
 SET @login = 'vmarc';
 UPDATE T_PROFIL_PRO SET pro_valid = 'D' WHERE cpt_login = @login;
 
+
+
+--21. Requête de génération d’un nouveau ticket visiteur
+SET @pseudo = 'vmarc';
+SET @mdp = 'xxxxxxxxxxxxxxx'; 
+
+INSERT INTO T_VISITEUR_VIS VALUES (NULL, @mdp, NOW(), NULL, NULL, NULL, @pseudo);
+
+
+--22. Requête donnant tous les visiteurs (ID + e-mail) et les commentaires associés, s’il y en a
+SELECT com_text, vis_id, vis_email
+FROM T_COMMENTAIRE_COM
+RIGHT JOIN T_VISITEUR_VIS USING(vis_id);
+
+
+
+--23. Requête de suppression d’un ticket visiteur (+ donnée associée) connaissant l’ID du ticket
+SET @vis = 6;
+
+DELETE FROM T_COMMENTAIRE_COM WHERE vis_id = @vis;
+DELETE FROM T_VISITEUR_VIS    WHERE vis_id = @vis;
+
+
+--24. Requête(s) donnant le pourcentage des visiteurs n’ayant pas laissé de commentaire
+
+SELECT 
+	(SELECT COUNT(vis_id) FROM T_VISITEUR_VIS 
+	 WHERE vis_id NOT IN (SELECT vis_id FROM T_COMMENTAIRE_COM))
+/	(SELECT COUNT(vis_id) 
+	  FROM T_VISITEUR_VIS)
+* 100.0
+as pourcentage;
+
+
+
+
+--25. Requête(s) d’ajout d’un commentaire et de mise à jour du ticket associé connaissant l’ID et le mot de passe du ticket visiteur
+SET @vis = 6;
+SET @mdp = 'xxxxxxxxxxxxxxx';
+SET @txt = 'Le musée était joli';
+
+-- ??? mdp ???
+
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), @txt, @vis, 'OK');
+
+
+--26. Requête cachant un commentaire dont on connaît l’identifiant (ID)
+SET @com = 6;
+SET @status = 'KO';
+
+UPDATE T_COMMENTAIRE_COM 
+SET com_status = @status
+WHERE com_id = @com;
+
+
+--27. Requête récupérant tous les commentaires (publiés) du livre d’or
+SELECT com_text
+FROM T_COMMENTAIRE_COM
+WHERE com_status = 'OK';
+
+--28. Requête listant tous les commentaires (+e-mail visiteurs), y compris ceux qui sont cachés
+SELECT com_text, vis_email
+FROM T_COMMENTAIRE_COM
+JOIN T_VISITEUR_VIS USING(vis_id);
+
+
+--29. Requête de suppression / modification d’un commentaire connaissant l’ID + mot de passe du ticket
+SET @com = 1;
+DELETE FROM T_COMMENTAIRE_COM WHERE com_id = @com;
+
+
+
+--30. Requête d’ajout d’une œuvre
+
+--31. Requête listant toutes les œuvres (intitulé, description et nom de l’image)
+
+
+--32. Requête donnant toutes les données d’une œuvre particulière dont on connaît l’ID
+
+--33. Requête listant tous les exposants (nom, biographie, URL du site Web et nom de l’image)
+
+--34. Requête donnant toutes les données d’un exposant particulier dont on connaît l’ID
+
+--35. Requête donnant les intitulés et images des œuvres collectives
+
+--36. Requêtes donnant toutes les données de toutes les œuvres de la base de données
+
+--37. Requête donnant les ID des exposants ayant participé à une œuvre collective
+
+--38. Requête(s) supprimant les données d’un exposant s’il n’a que des œuvres individuelles (mais conservation de l’exposant et de sa participation à des œuvres collectives) + Cf 42
+
+--39. Requête(s) supprimant toutes les données d’une œuvre (NE PAS supprimer les exposants, surtout s’ils sont liés à d’autres œuvres !) (Rappel : un exposant expose au moins une œuvre minimum) + Cf 42
+
+--40. Requête de modification des caractéristiques d’une œuvre / d’un exposant
+
+--41. Requête associant une œuvre à un exposant / dissociant une œuvre d’un exposant (ID connus)
+
+--42. Requête supprimant toutes les œuvres liées à aucun exposant (idem pour les exposants)

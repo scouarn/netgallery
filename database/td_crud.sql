@@ -57,6 +57,12 @@ WHERE new_id = (
 	SELECT MAX(new_id) FROM T_NEWS_NEW
 );
 
+-- ou bien
+SELECT new_id, new_html 
+FROM T_NEWS_NEW
+ORDER BY new_id DESC
+LIMIT 1;
+
 
 --8. déterminez toutes les actualités ajoutées entre 2 dates à spécifier,
 SET @debut = '2022-01-01';
@@ -96,11 +102,12 @@ as pourcentage;
 SET @login = 'vmarc';
 SET @mdp = 'motdepasse';
 
-SELECT COUNT(*) <> 0
+SELECT COUNT(*)
 FROM T_COMPTE_CPT
+JOIN T_PROFIL_PRO USING(cpt_login)
 WHERE cpt_login = @login
 AND cpt_mdp = MD5(@mdp);
-
+AND pro_valid = 'A';
 
 
 -- 13. Supprimez toutes les données associées à l’utilisateur de pseudo « mdurand ». Que faut-il faire si cet utilisateur a ajouté des actualités / exposants ?
