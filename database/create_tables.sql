@@ -1,10 +1,10 @@
 CREATE TABLE T_PRESENTATION_PRE (
-	pre_debut		DATETIME		NOT NULL,
-	pre_verni		DATETIME		NOT NULL,
-	pre_fin			DATETIME		NOT NULL,
-	pre_titre		VARCHAR(64)		NOT NULL,
-	pre_bienv		VARCHAR(64)		NOT NULL,
-	pre_lieu		VARCHAR(64)		NOT NULL
+	pre_debut		DATETIME,
+	pre_verni		DATETIME,
+	pre_fin			DATETIME,
+	pre_titre		VARCHAR(64),
+	pre_bienv		VARCHAR(64),
+	pre_lieu		VARCHAR(64)
 ) ENGINE=InnoDB;
 
 CREATE TABLE T_COMPTE_CPT (

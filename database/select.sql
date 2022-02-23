@@ -78,11 +78,11 @@ SET @role = 'A';
 SET @status = 'A';
 
 UPDATE T_PROFIL_PRO
--- SET pro_nom = @nom
--- SET pro_prenom = @prenom
--- SET pro_email = @email
--- SET pro_role = @role
--- SET pro_status = @status
+SET pro_nom = @nom,
+	pro_prenom = @prenom,
+	pro_email = @email,
+	pro_role = @role,
+	pro_valid = @status
 WHERE cpt_login = @login;
 
 
@@ -97,6 +97,26 @@ SELECT * FROM T_PROFIL_PRO JOIN T_COMPTE_CPT USING(cpt_login);
 -- 15. Requête de désactivation (/activation) d'un profil (pseudo connu)
 SET @login = 'vmarc';
 UPDATE T_PROFIL_PRO SET pro_valid = 'D' WHERE cpt_login = @login;
+
+
+--16. Requête d’ajout des informations de l’exposition
+INSERT INTO T_PRESENTATION_PRE (pre_titre) VALUES ('Super inttitulé d\'exposition');
+
+--17. Requête vérifiant qu’il n’y a qu’une seule ligne dans la table de gestion de la configuration
+SELECT COUNT(*) = 1 FROM T_PRESENTATION_PRE;
+
+
+--18. Requête donnant les informations sur l’expo. (dont nombre de jours jusqu’au vernissage)
+SELECT TIMESTAMPDIFF(DAY, NOW(), pre_verni) FROM T_PRESENTATION_PRE;
+
+
+--19. Requête de modification de l’intitulé, de la date de vernissage et du lieu de l’exposition
+
+UPDATE T_PRESENTATION_PRE
+SET pre_titre = 'Expo net gallery';
+
+--20. Requête de suppression de toutes les informations de l’exposition
+DELETE FROM T_PRESENTATION_PRE;
 
 
 
@@ -139,11 +159,11 @@ SET @vis = 6;
 SET @mdp = 'xxxxxxxxxxxxxxx';
 SET @txt = 'Le musée était joli';
 
--- test mdp/validité ???
+-- test mdp/validité
 SELECT vis_id
 FROM T_VISITEUR_VIS
 WHERE (vis_id, vis_mdp) = (@vis, @mdp)
-AND HOUR(TIMEDIFF(NOW(), vis_date)) < 2;
+AND TIMESTAMPDIFF(HOUR, vis_date, NOW()) < 2;
 
 -- insertion
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), @txt, @vis, 'OK');
