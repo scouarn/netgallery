@@ -1,5 +1,3 @@
--- Actualités :
-
 -- 1. Requête d'ajout d'une actualité
 SET @fichier = 'new_x.html';
 SET @login = 'admin';
@@ -141,8 +139,13 @@ SET @vis = 6;
 SET @mdp = 'xxxxxxxxxxxxxxx';
 SET @txt = 'Le musée était joli';
 
--- ??? mdp ???
+-- test mdp/validité ???
+SELECT vis_id
+FROM T_VISITEUR_VIS
+WHERE (vis_id, vis_mdp) = (@vis, @mdp)
+AND HOUR(TIMEDIFF(NOW(), vis_date)) < 2;
 
+-- insertion
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), @txt, @vis, 'OK');
 
 
@@ -168,33 +171,128 @@ JOIN T_VISITEUR_VIS USING(vis_id);
 
 --29. Requête de suppression / modification d’un commentaire connaissant l’ID + mot de passe du ticket
 SET @com = 1;
+SET @mdp = 'xxxxxxxxxxxxxxx';
+SET @new_desc = 'En fait le musée était pas terrible...'
+
+-- test mdp
+SELECT vis_id 
+FROM T_VISITEUR_VIS
+JOIN T_COMMENTAIRE_COM USING(vis_id)
+WHERE vis_mdp = @mdp;
+
 DELETE FROM T_COMMENTAIRE_COM WHERE com_id = @com;
 
+UPDATE T_COMMENTAIRE_COM 
+SET com_desc = @new_desc
+WHERE com_id = @com;
 
 
 --30. Requête d’ajout d’une œuvre
+SET @nom_oeuvre = 'nouvelle_oeuvre';
+
+INSERT INTO T_OEUVRE_OVR (ovr_titre) VALUES (@nom_oeuvre);
+-- INSERT INTO TJ_EXP_OVR VALUES (1, 3);
+
 
 --31. Requête listant toutes les œuvres (intitulé, description et nom de l’image)
-
+SELECT ovr_titre, ovr_desc, ovr_img
+FROM T_OEUVRE_OVR;
 
 --32. Requête donnant toutes les données d’une œuvre particulière dont on connaît l’ID
+SET @oeuvre = 1;
+
+SELECT *
+FROM T_OEUVRE_OVR
+WHERE ovr_id = @oeuvre;
+
 
 --33. Requête listant tous les exposants (nom, biographie, URL du site Web et nom de l’image)
+SELECT exp_prenom, exp_nom, exp_bio, exp_website, exp_img
+FROM T_EXPOSANT_EXP;
 
 --34. Requête donnant toutes les données d’un exposant particulier dont on connaît l’ID
+SET @exposant = 1;
+
+SELECT *
+FROM T_EXPOSANT_EXP
+WHERE exp_id = @exposant;
+
 
 --35. Requête donnant les intitulés et images des œuvres collectives
+SELECT ovr_titre, ovr_img
+FROM T_OEUVRE_OVR
+WHERE ovr_id IN (
+	SELECT ovr_id FROM TJ_EXP_OVR
+	GROUP BY ovr_id
+	HAVING COUNT(exp_id) > 1
+);
+
 
 --36. Requêtes donnant toutes les données de toutes les œuvres de la base de données
+SELECT * FROM T_OEUVRE_OVR;
+
 
 --37. Requête donnant les ID des exposants ayant participé à une œuvre collective
 
+-- t1.exp_id a travaillé avec t2.exp_id sur ovr_id
+SELECT t1.exp_id
+FROM TJ_EXP_OVR as t1
+JOIN TJ_EXP_OVR as t2 USING(ovr_id) 
+WHERE t1.exp_id <> t2.exp_id;
+
+
 --38. Requête(s) supprimant les données d’un exposant s’il n’a que des œuvres individuelles (mais conservation de l’exposant et de sa participation à des œuvres collectives) + Cf 42
+SET @exp = 1;
+
+-- vérifier que l'exposant n'expose que des oeuvres individuelles
+SELECT * FROM T_EXPOSANT_EXP
+WHERE exp_id NOT IN (
+	SELECT exp_id, ovr_id FROM TJ_EXP_OVR
+	GROUP BY ovr_id
+	HAVING COUNT(exp_id) > 1
+);
+
+-- suppr
+DELETE FROM TJ_EXP_OVR WHERE exp_id = @exp;
+DELETE FROM T_EXPOSANT_EXP WHERE exp_id = @exp;
+
 
 --39. Requête(s) supprimant toutes les données d’une œuvre (NE PAS supprimer les exposants, surtout s’ils sont liés à d’autres œuvres !) (Rappel : un exposant expose au moins une œuvre minimum) + Cf 42
 
+SET @ovr = 1;
+
+DELETE FROM TJ_EXP_OVR WHERE ovr_id = @ovr;
+DELETE FROM T_OEUVRE_OVR WHERE ovr_id = @ovr;
+
+
+
 --40. Requête de modification des caractéristiques d’une œuvre / d’un exposant
+SET @ovr = 1;
+SET @new_title = 'oeuvre trop belle';
+
+UPDATE T_OEUVRE_OVR
+SET ovr_titre = @new_title
+WHERE ovr_id = @ovr;
+
 
 --41. Requête associant une œuvre à un exposant / dissociant une œuvre d’un exposant (ID connus)
+SET @ovr = 1;
+SET @exp = 1;
+
+INSERT INTO TJ_EXP_OVR (exp_id, ovr_id) VALUES (@exp, @ovr);
+
+-- dissoss
+DELETE FROM TJ_EXP_OVR WHERE (exp_id, ovr_id) = (@exp, @ovr);
+
 
 --42. Requête supprimant toutes les œuvres liées à aucun exposant (idem pour les exposants)
+
+DELETE FROM T_OEUVRE_OVR 
+WHERE ovr_id NOT IN (
+	SELECT ovr_id FROM TJ_EXP_OVR
+);
+
+DELETE FROM T_EXPOSANT_EXP 
+WHERE exp_id NOT IN (
+	SELECT exp_id FROM TJ_EXP_OVR
+);

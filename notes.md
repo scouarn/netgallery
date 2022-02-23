@@ -1,3 +1,6 @@
+ip obiwan2 172.18.1.25/adminbdd
+
+
 * template : https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_food_blog&stacked=h
 * thème : https://fr.wikipedia.org/wiki/Jeu_math%C3%A9matique
 
