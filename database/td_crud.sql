@@ -126,9 +126,26 @@ SELECT
 	(SELECT COUNT(cpt_login) FROM T_COMPTE_CPT)
 =	(SELECT COUNT(cpt_login) FROM T_PROFIL_PRO);
 
+-- autre méthode
+SELECT * 
+FROM T_COMPTE_CPT
+RIGHT JOIN T_PROFIL_PRO;
+
+
 
 --15. Supprimez tous les comptes n’ayant pas de profil associé.
-DELETE FROM T_COMPTE_CPT 
+DELETE FROM T_COMPTE_CPT
 WHERE cpt_login NOT IN (
 	SELECT cpt_login FROM T_PROFIL_PRO
 );
+
+
+-- 16. Pour aller plus loin : donnez la liste de tous les pseudos qui existent dans la base de données et les exposants associés, s’il y en a, ainsi que leur(s) œuvre(s).
+
+SELECT cpt_login, exp_nom, ovr_titre
+FROM T_COMPTE_CPT
+LEFT JOIN T_EXPOSANT_EXP USING(cpt_login)
+LEFT JOIN TJ_EXP_OVR USING(exp_id)
+LEFT JOIN T_OEUVRE_OVR USING(ovr_id);
+
+
