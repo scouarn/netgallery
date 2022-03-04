@@ -1,7 +1,7 @@
 INSERT INTO T_PRESENTATION_PRE VALUES ('2022-05-01 8:00:00', '2022-05-01 10:00:00', '2022-08-31 17:00:00', 'Les jeux mathématiques', 'Bienvenue sur l\'expo en ligne', 'Au café rue des Arpenteurs');
 
 
-INSERT INTO T_COMPTE_CPT VALUES ('vmarc', MD5('vmarc'));
+INSERT INTO T_COMPTE_CPT VALUES ('vmarc', MD5('motdepasse'));
 INSERT INTO T_PROFIL_PRO VALUES ('vmarc', 'Marc', 'Valérie', 'vmarc@univ-brest.fr', 'A', 'A', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('admin', MD5('admin'));

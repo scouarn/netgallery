@@ -11,9 +11,9 @@ WHERE cpt_login = @pseudo;
 --2. Supprimez une ligne de la table des profils connaissant le pseudo d'un utilisateur.
 SET @pseudo = 'vmarc';
 
+-- suppr/réattribuer news et exposants liés à ce pseudo
 DELETE FROM T_PROFIL_PRO WHERE cpt_login = @pseudo;
 DELETE FROM T_COMPTE_CPT WHERE cpt_login = @pseudo;
-
 
 --3. a) Listez tous les noms, prénoms et rôles des utilisateurs suivant l'ordre alphabétique des noms de famille.
 SELECT pro_nom, pro_prenom, pro_role
@@ -37,7 +37,7 @@ ORDER BY pro_prenom DESC;
 
 
 --5. listez le nom et le prénom des profils ajoutés en 2018,
-SET @annee = 2018;
+SET @annee = 2022;
 
 SELECT pro_nom, pro_prenom, pro_date
 FROM T_PROFIL_PRO
@@ -46,9 +46,11 @@ WHERE YEAR(pro_date) = @annee;
 
 --6. insérer la date du jour lors de l'ajout d’une actualité,
 SET @pseudo = 'gEstionnaire';
-SET @fichier = CONCAT('new_', DATE_FORMAT(NOW(), '%Y%m%d_%H%i%s'), '.html');
+SET @fichier = 'new.html';
+--SET @fichier = CONCAT('new_', DATE_FORMAT(NOW(), '%Y%m%d_%H%i%s'), '.html');
 
 INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), @fichier, @pseudo);
+
 
 --7. déterminez le numéro de la dernière actualité ajoutée (+ son texte ?),
 SELECT new_id, new_html 
@@ -73,8 +75,14 @@ FROM T_NEWS_NEW
 WHERE new_date > @debut
 AND new_date < @fin;
 
+-- ou bien
+SELECT * 
+FROM T_NEWS_NEW
+WHERE new_date BETWEEN @debut AND @fin;
+
+
 --9. dénombrez les Organisateurs puis les Administrateurs,
-SELECT pro_role, COUNT(cpt_login) 
+SELECT pro_role, COUNT(*)
 FROM T_PROFIL_PRO
 GROUP BY pro_role;
 
@@ -86,7 +94,7 @@ GROUP BY pro_role;
 
 
 --11. donnez le pourcentage de tickets visiteurs générés par « vmarc ».
-SET @pseudo = 'admin';
+SET @pseudo = 'vmarc';
 
 SELECT 
 	(SELECT COUNT(vis_id) 
@@ -106,7 +114,7 @@ SELECT COUNT(*)
 FROM T_COMPTE_CPT
 JOIN T_PROFIL_PRO USING(cpt_login)
 WHERE cpt_login = @login
-AND cpt_mdp = MD5(@mdp);
+AND cpt_mdp = MD5(@mdp)
 AND pro_valid = 'A';
 
 
@@ -122,14 +130,29 @@ DELETE FROM T_COMPTE_CPT WHERE cpt_login = @pseudo;
 
 
 --14. Proposez une requête permettant de vérifier s’il y a bien autant de comptes que de profils dans la base de données.
+
+-- vrai ou faux
 SELECT 
 	(SELECT COUNT(cpt_login) FROM T_COMPTE_CPT)
 =	(SELECT COUNT(cpt_login) FROM T_PROFIL_PRO);
 
--- autre méthode
-SELECT * 
-FROM T_COMPTE_CPT
-RIGHT JOIN T_PROFIL_PRO;
+
+-- liste les comptes sans profil
+-- rq : un profil a forcément un compte à cause de la contrainte de clé étrangère
+SELECT * FROM T_COMPTE_CPT
+LEFT JOIN T_PROFIL_PRO USING(cpt_login)
+WHERE pro_valid IS NULL;
+
+
+-- autre méthodes
+SELECT cpt_login FROM T_COMPTE_CPT
+EXCEPT
+SELECT cpt_login FROM T_PROFIL_PRO;
+
+SELECT * FROM T_COMPTE_CPT
+WHERE cpt_login NOT IN (
+	SELECT cpt_login FROM T_PROFIL_PRO
+);
 
 
 
