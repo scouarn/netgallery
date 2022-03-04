@@ -159,14 +159,33 @@ SET @vis = 6;
 SET @mdp = 'xxxxxxxxxxxxxxx';
 SET @txt = 'Le musée était joli';
 
+SET @nom = 'Bur';
+SET @prenom = 'Max';
+SET @email = 'maxbur@laposte.net';
+
+
 -- test mdp/validité
-SELECT vis_id
-FROM T_VISITEUR_VIS
-WHERE (vis_id, vis_mdp) = (@vis, @mdp)
-AND TIMESTAMPDIFF(HOUR, vis_date, NOW()) < 2;
+SET @mdp_valid = (
+	SELECT vis_id
+	FROM T_VISITEUR_VIS
+	WHERE (vis_id, vis_mdp) = (@vis, @mdp)
+	AND TIMESTAMPADD(HOUR, vis_date, NOW()) < 2
+);
+
+
+-- maj des info 
+UPDATE T_VISITEUR_VIS
+SET vis_nom = @nom,
+	vis_prenom = @prenom,
+	vis_email = @email
+WHERE vis_id = @vis
+AND @mdp_valid IS NOT NULL;
+
 
 -- insertion
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), @txt, @vis, 'OK');
+INSERT INTO T_COMMENTAIRE_COM 
+SELECT NULL, NOW(), @txt, @vis, 'OK' FROM DUAL
+WHERE @mdp_valid IS NOT NULL;
 
 
 --26. Requête cachant un commentaire dont on connaît l’identifiant (ID)
@@ -190,21 +209,34 @@ JOIN T_VISITEUR_VIS USING(vis_id);
 
 
 --29. Requête de suppression / modification d’un commentaire connaissant l’ID + mot de passe du ticket
-SET @com = 1;
-SET @mdp = 'xxxxxxxxxxxxxxx';
-SET @new_desc = 'En fait le musée était pas terrible...'
+SET @vis = 2;
+SET @mdp = '111111111111111';
+SET @new_desc = 'En fait le musée était pas terrible...';
 
 -- test mdp
-SELECT vis_id 
-FROM T_VISITEUR_VIS
-JOIN T_COMMENTAIRE_COM USING(vis_id)
-WHERE vis_mdp = @mdp;
+SET @mdp_valid = (
+	SELECT vis_id
+	FROM T_VISITEUR_VIS
+	WHERE vis_mdp = @mdp
+	AND vis_id = @vis
+);
 
-DELETE FROM T_COMMENTAIRE_COM WHERE com_id = @com;
+-- SELECT @mdp_valid;
+
+DELETE FROM T_COMMENTAIRE_COM 
+WHERE @mdp_valid IS NOT NULL
+AND com_id IN (
+	SELECT com_id FROM T_COMMENTAIRE_COM
+	WHERE vis_id = @vis
+);
 
 UPDATE T_COMMENTAIRE_COM 
 SET com_desc = @new_desc
-WHERE com_id = @com;
+WHERE @mdp_valid IS NOT NULL
+AND com_id IN (
+	SELECT com_id FROM T_COMMENTAIRE_COM
+	WHERE vis_id = @vis
+);
 
 
 --30. Requête d’ajout d’une œuvre
@@ -253,9 +285,19 @@ SELECT * FROM T_OEUVRE_OVR;
 
 
 --37. Requête donnant les ID des exposants ayant participé à une œuvre collective
+SELECT exp_id 
+FROM TJ_EXP_OVR
+WHERE ovr_id IN (
+	SELECT ovr_id
+	FROM TJ_EXP_OVR
+	GROUP BY ovr_id
+	HAVING COUNT(exp_id) > 1
+);
 
+
+-- autre méthode
 -- t1.exp_id a travaillé avec t2.exp_id sur ovr_id
-SELECT t1.exp_id
+SELECT DISTINCT t1.exp_id
 FROM TJ_EXP_OVR as t1
 JOIN TJ_EXP_OVR as t2 USING(ovr_id) 
 WHERE t1.exp_id <> t2.exp_id;
@@ -265,16 +307,24 @@ WHERE t1.exp_id <> t2.exp_id;
 SET @exp = 1;
 
 -- vérifier que l'exposant n'expose que des oeuvres individuelles
-SELECT * FROM T_EXPOSANT_EXP
-WHERE exp_id NOT IN (
-	SELECT exp_id, ovr_id FROM TJ_EXP_OVR
-	GROUP BY ovr_id
-	HAVING COUNT(exp_id) > 1
+SET @exp_ok = (
+
+	SELECT * FROM T_EXPOSANT_EXP
+	WHERE exp_id NOT IN (
+		SELECT exp_id, ovr_id FROM TJ_EXP_OVR
+		GROUP BY ovr_id
+		HAVING COUNT(exp_id) > 1
+	)
 );
 
 -- suppr
-DELETE FROM TJ_EXP_OVR WHERE exp_id = @exp;
-DELETE FROM T_EXPOSANT_EXP WHERE exp_id = @exp;
+DELETE FROM TJ_EXP_OVR 
+WHERE exp_id = @exp
+AND @exp_ok IS NOT NULL;
+
+DELETE FROM T_EXPOSANT_EXP 
+WHERE exp_id = @exp
+AND @exp_ok IS NOT NULL;
 
 
 --39. Requête(s) supprimant toutes les données d’une œuvre (NE PAS supprimer les exposants, surtout s’ils sont liés à d’autres œuvres !) (Rappel : un exposant expose au moins une œuvre minimum) + Cf 42
@@ -307,11 +357,15 @@ DELETE FROM TJ_EXP_OVR WHERE (exp_id, ovr_id) = (@exp, @ovr);
 
 --42. Requête supprimant toutes les œuvres liées à aucun exposant (idem pour les exposants)
 
+
+-- suppr oeuvres
 DELETE FROM T_OEUVRE_OVR 
 WHERE ovr_id NOT IN (
 	SELECT ovr_id FROM TJ_EXP_OVR
 );
 
+
+-- suppr exposants
 DELETE FROM T_EXPOSANT_EXP 
 WHERE exp_id NOT IN (
 	SELECT exp_id FROM TJ_EXP_OVR
