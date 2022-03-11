@@ -3,8 +3,8 @@
 <title>Net'Gallery</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/w3.css">
-<link rel="stylesheet" href="/Karma.css">
+<link rel="stylesheet" href="./w3.css">
+<link rel="stylesheet" href="./Karma.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}
@@ -39,7 +39,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <h3>DEBUG</h3>
 <?php
 
-$mysqli = new mysqli('localhost','scouarn','admin','netgallery');
+
+// $mysqli = new mysqli('localhost','scouarn','admin','netgallery');
+$mysqli = new mysqli('localhost','zscouarjo','i5zs2qkh','zfl2-zscouarjo');
+
+
+
+
+
 
 
 if (!$mysqli->set_charset("utf8")) {
