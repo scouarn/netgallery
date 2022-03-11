@@ -59,7 +59,7 @@ CREATE TABLE T_OEUVRE_OVR (
 	ovr_titre 		VARCHAR(64) 	NOT NULL,
 	ovr_annee		CHAR(4),
 	ovr_desc		VARCHAR(1024),
-	ovr_image		VARCHAR(256),
+	ovr_img			VARCHAR(256),
 
 	PRIMARY KEY(ovr_id)
 ) ENGINE=InnoDB;
