@@ -9,7 +9,12 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 .w3-bar-block .w3-bar-item {padding:20px}
 </style>
+
 <body>
+
+
+
+
 
 <!-- Sidebar (hidden by default) -->
 <nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
@@ -30,45 +35,122 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
 
 
+<div class="w3-container w3-padding-32 w3-center">
+<h3>DEBUG</h3>
+<?php
+
+$mysqli = new mysqli('localhost','scouarn','admin','netgallery');
+
+
+if (!$mysqli->set_charset("utf8")) {
+	echo($mysqli->error . 'Erreur chargement utf8<br/>');
+	exit();
+}
+
+echo("Connexion BDD OK<br/>");
+
+
+$query = "SELECT * FROM T_PRESENTATION_PRE;";
+
+echo($query . "<br/>");
+
+$res = $mysqli->query($query);
+
+
+if ($res == false) {
+
+	echo("Erreur SQL : ");
+	echo ("Errno: " . $mysqli->errno . "<br/>");
+	echo ("Error: " . $mysqli->error . "<br/>");
+	exit();
+
+}
+
+echo("Query OK : " . $res->num_rows . " rows" . "<br/>");
+
+$pre = $res->fetch_assoc();
+
+var_dump($pre);
+
+$mysqli->close();
+
+
+?>
+</div>
+	
+
+	<hr id="connexion">
+	<div class="w3-container w3-padding-32 w3-center">  
+		<h3>Connexion</h3><br>
+
+		<form action="login.php" method="post">
+			<p>Pseudo <input type="text" name="pseudo" /></p>
+			<p>Mot de passe <input type="text" name="mdp" /></p>
+			<p><input type="submit" value="Valider"></p>
+		</form>
+	</div>
+
+
+	<hr id="inscription">
+	<div class="w3-container w3-padding-32 w3-center">  
+		<h3>Inscription</h3><br>
+
+		<form action="register.php" method="post">
+			<p>Pseudo <input type="text" name="pseudo" /></p>
+			<p>Mot de passe <input type="text" name="mdp" /></p>
+			<p><input type="submit" value="Valider"></p>
+		</form>
+	</div>
+
+
+
 	<!-- About Section -->
 	<hr id="about">
 	<div class="w3-container w3-padding-32 w3-center">  
 		<h3>À propos</h3><br>
 
-		<div class="w3-padding-32">
-			<p>[description - dates]</p>
-		</div>
+			<ul><?php 
+
+				echo("<li>Début : " . $pre['pre_debut'] . "</li>");
+				echo("<li>Vernissage : " . $pre['pre_verni'] . "</li>");
+				echo("<li>Fin : " . $pre['pre_fin']   . "</li>");
+				echo("<li>Intitulé : " . $pre['pre_titre'] . "</li>");
+				echo("<li>Bienvenue : " . $pre['pre_bienv'] . "</li>");
+				echo("<li>Lieu : " . $pre['pre_lieu']  . "</li>");
+				
+			?></ul>
 	</div>
 	
 
 	<hr id="oeuvres">
 	<div class="w3-container w3-padding-32 w3-center">  
 		<h3>Oeuvres</h3><br>
-
 	</div>
+
+
 
 	<!-- Row -->
 	<div class="w3-row-padding w3-padding-16 w3-center">
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
@@ -79,25 +161,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<!-- Row -->
 	<div class="w3-row-padding w3-padding-16 w3-center" id="gallery">
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
 
 		<div class="w3-quarter">
-			<img src="/assets/oeuvres/placeholder.jpg" style="width:100%">
+			<img src="./assets/oeuvres/placeholder.jpg" style="width:100%">
 			<h3>Titre</h3>
 			<p>Description</p>
 		</div>
@@ -114,22 +196,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<!-- Row -->
 	<div class="w3-row-padding w3-padding-16 w3-center">
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
@@ -139,22 +221,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 	<!-- Row -->
 	<div class="w3-row-padding w3-padding-16 w3-center">
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
 		<div class="w3-quarter">
-			<img src="/assets/artistes/placeholder.jpg" style="width:100%">
+			<img src="./assets/artistes/placeholder.jpg" style="width:100%">
 			<h3>Nom</h3>
 			<p>Bio</p>
 		</div>
