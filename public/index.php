@@ -40,13 +40,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Karma", sans-serif}
 <?php
 
 
-// $mysqli = new mysqli('localhost','scouarn','admin','netgallery');
-$mysqli = new mysqli('localhost','zscouarjo','i5zs2qkh','zfl2-zscouarjo');
-
-
-
-
-
+$mysqli = new mysqli('localhost','scouarn','admin','netgallery');
+// $mysqli = new mysqli('localhost','zscouarjo','i5zs2qkh','zfl2-zscouarjo');
 
 
 if (!$mysqli->set_charset("utf8")) {
@@ -55,32 +50,6 @@ if (!$mysqli->set_charset("utf8")) {
 }
 
 echo("Connexion BDD OK<br/>");
-
-
-$query = "SELECT * FROM T_PRESENTATION_PRE;";
-
-echo($query . "<br/>");
-
-$res = $mysqli->query($query);
-
-
-if ($res == false) {
-
-	echo("Erreur SQL : ");
-	echo ("Errno: " . $mysqli->errno . "<br/>");
-	echo ("Error: " . $mysqli->error . "<br/>");
-	exit();
-
-}
-
-echo("Query OK : " . $res->num_rows . " rows" . "<br/>");
-
-$pre = $res->fetch_assoc();
-
-var_dump($pre);
-
-$mysqli->close();
-
 
 ?>
 </div>
@@ -105,6 +74,11 @@ $mysqli->close();
 		<form action="register.php" method="post">
 			<p>Pseudo <input type="text" name="pseudo" /></p>
 			<p>Mot de passe <input type="text" name="mdp" /></p>
+			<p>Confirmation mot de passe <input type="text" name="mdp_conf" /></p>
+			<p>Nom <input type="text" name="nom" /></p>
+			<p>Prénom <input type="text" name="prenom" /></p>
+			<p>Mail <input type="text" name="mail" /></p>
+
 			<p><input type="submit" value="Valider"></p>
 		</form>
 	</div>
@@ -116,16 +90,54 @@ $mysqli->close();
 	<div class="w3-container w3-padding-32 w3-center">  
 		<h3>À propos</h3><br>
 
-			<ul><?php 
+		<ul><?php 
 
-				echo("<li>Début : " . $pre['pre_debut'] . "</li>");
-				echo("<li>Vernissage : " . $pre['pre_verni'] . "</li>");
-				echo("<li>Fin : " . $pre['pre_fin']   . "</li>");
-				echo("<li>Intitulé : " . $pre['pre_titre'] . "</li>");
-				echo("<li>Bienvenue : " . $pre['pre_bienv'] . "</li>");
-				echo("<li>Lieu : " . $pre['pre_lieu']  . "</li>");
+		$query = "SELECT * FROM T_PRESENTATION_PRE;";
+		$res = $mysqli->query($query);
+		$row = $res->fetch_assoc();
+
+		echo("<li>Début : " .      $row['pre_debut'] . "</li>");
+		echo("<li>Vernissage : " . $row['pre_verni'] . "</li>");
+		echo("<li>Fin : " .        $row['pre_fin']   . "</li>");
+		echo("<li>Intitulé : " .   $row['pre_titre'] . "</li>");
+		echo("<li>Bienvenue : " .  $row['pre_bienv'] . "</li>");
+		echo("<li>Lieu : " .       $row['pre_lieu']  . "</li>");
 				
-			?></ul>
+		?></ul>
+	</div>
+
+
+
+	<!-- News Section -->
+	<hr id="news">
+	<div class="w3-container w3-padding-32 w3-center">  
+		<h3>Actualités</h3><br>
+
+		<table class='w3-table-all'>
+		<tr>
+			<th>Auteur</th>
+			<th>Date</th>
+			<th>Fichier</th>
+		</tr>
+
+		<?php 
+
+		$query = "SELECT * FROM T_NEWS_NEW;";
+		$res = $mysqli->query($query);
+		
+		while ($row = $res->fetch_assoc()) {
+
+			echo '<tr>';
+			echo '<td>' . $row['cpt_login'] . '</td>';
+			echo '<td>' . $row['new_date']  . '</td>';
+			echo '<td>' . $row['new_html']  . '</td>';
+			echo '</tr>';
+
+		}
+
+		?>
+		</table>
+
 	</div>
 	
 
@@ -266,4 +278,8 @@ function w3_close() {
 </script>
 
 </body>
+<?php $mysqli->close(); ?>
+
+
+
 </html>
