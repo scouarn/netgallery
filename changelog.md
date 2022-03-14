@@ -1,6 +1,15 @@
 Changelog
 =========
 
+## v1.0 
+Application web :
+* Formulaire inscription
+* Formulaire connexion
+* Livre d'or
+* Information de la table présentation
+* Liste des nouvelles
+
+
 ## v0.4
 * Template nettoyé
 
