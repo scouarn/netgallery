@@ -53,7 +53,7 @@
 	<tr>
 		<th>Auteur</th>
 		<th>Date</th>
-		<th>Fichier</th>
+		<th>Fichier*</th>
 	</tr>
 
 	<?php 
@@ -63,16 +63,17 @@
 	
 	while ($row = $res->fetch_assoc()) {
 
-		echo '<tr>';
-		echo '<td>' . $row['cpt_login'] . '</td>';
-		echo '<td>' . $row['new_date']  . '</td>';
-		echo '<td>' . $row['new_html']  . '</td>';
-		echo '</tr>';
+		echo "<tr>";
+		echo "<td>{$row['cpt_login']}</td>";
+		echo "<td>{$row['new_date']}</td>";
+		echo "<td><a href='news/{$row['new_html']}'>{$row['new_html']}</a></td>";
+		echo "</tr>";
 
 	}
 
 	?>
 	</table>
+	<p>*les fichiers html seront insérés sur la page</p>
 
 </div>
 
