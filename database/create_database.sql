@@ -1,1 +1,1 @@
-CREATE DATABASE netgallery;
+CREATE DATABASE `zfl2-zscouarjo`;

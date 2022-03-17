@@ -1,1 +1,1 @@
-DROP DATABASE IF EXISTS netgallery;
+DROP DATABASE IF EXISTS `zfl2-zscouarjo`;

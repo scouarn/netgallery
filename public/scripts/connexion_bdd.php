@@ -4,7 +4,6 @@
 // prevent mokey error throwing to enable error handling
 mysqli_report(MYSQLI_REPORT_OFF);
 
-// $mysqli = new mysqli('localhost','scouarn','admin','netgallery');
 $mysqli = new mysqli('localhost','zscouarjo','i5zs2qkh','zfl2-zscouarjo');
 
 if ($mysqli->connect_errno) {
