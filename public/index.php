@@ -36,9 +36,6 @@
 
 	?></ul>
 
-	<a href="gallerie.php" class="w3-xlarge w3-padding-16">Accéder à la gallerie.</a>
-
-
 	<h2 class="section-title">Actualités</h2>
 
 	<table class='w3-table-all'>
