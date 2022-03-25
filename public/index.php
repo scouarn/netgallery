@@ -13,9 +13,7 @@
 	include 'scripts/connexion_bdd.php';
 ?>
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
-
+<div class="content">
 
 
 	<h2 class="section-title">À propos</h2>
@@ -29,16 +27,14 @@
 		echo "{$row['pre_bienv']}<br/>";
 	?>
 
-	<div id="list-dates">
-	 <ul><?php 
+	<ul class="liste"><?php 
 
 		echo("<li>Début :      {$row['pre_debut']}</li>");
 		echo("<li>Vernissage : {$row['pre_verni']}</li>");
 		echo("<li>Fin :        {$row['pre_fin'  ]}</li>");
 		echo("<li>Lieu :       {$row['pre_lieu' ]}</li>");
 
-	 ?></ul>
-	</div>
+	?></ul>
 
 	<a href="gallerie.php" class="w3-xlarge w3-padding-16">Accéder à la gallerie.</a>
 

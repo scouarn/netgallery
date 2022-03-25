@@ -56,7 +56,7 @@ INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'C\'était joli', 'OK', 4);
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Je retournerai', 'OK', 5);
 
 
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Conway', 'John', 'Mathématicien 1937-2020', NULL, NULL, NULL, 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Conway', 'John', 'Mathématicien 1937-2020', NULL, NULL, 'conway.jpg', 'gEstionnaire');
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Gardner', 'Martin', 'Mathématicien 1914-2010', NULL, NULL, NULL, 'gEstionnaire');
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Golomb', 'Solomon', 'Mathématicien 1932-2016', NULL, NULL, NULL, 'gEstionnaire');
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Michie', 'Donald', 'Chercheur en intélligence artificielle 1929-2007', NULL, NULL, NULL, 'gEstionnaire');
@@ -96,10 +96,10 @@ INSERT INTO TJ_EXP_OVR VALUES (6, 7);
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Tir complexe', '2010', 'Un nombre ou plusieurs sont affichés sur le plan complexe et une opération est donnée, le but est de placer la résultat sur le plan.', NULL);
 INSERT INTO TJ_EXP_OVR VALUES (7, 8);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Rubik\'s Cube', '1974', 'Célèbre puzzle cubique.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Rubik\'s Cube', '1974', 'Célèbre puzzle cubique.', 'rubiks_cube.jpg');
 INSERT INTO TJ_EXP_OVR VALUES (8, 9);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Les tours de Hanoi', '1883', 'Jeu d\'origine indienne dont le but est de déplacer une pile de disques en étant limité à trois positions et en gardant les tailles des disques décroissantes.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Les tours de Hanoi', '1883', 'Jeu d\'origine indienne dont le but est de déplacer une pile de disques en étant limité à trois positions et en gardant les tailles des disques décroissantes.', 'hanoi.jpg');
 INSERT INTO TJ_EXP_OVR VALUES (9, 10);
 
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, '2048', '2014', 'Jeu célèbre où l\'on fusionne des cellules sur une grille.', NULL);

@@ -12,34 +12,30 @@
 	include 'sections/header.php';
 	include 'scripts/connexion_bdd.php';
 
-	$query = "SELECT * FROM T_OEUVRE_OVR;";
+	$query = "SELECT * FROM T_EXPOSANT_EXP;";
 	$res = $mysqli->query($query);
 
 ?>
 
-
 <div class="content">
 
-	<h2 class="section-title">Oeuvres</h2>
 
+	<h2 class="section-title">Exposants</h2>
 
 
 	<div class="mosaic">
 		
 	<?php 
 
-
 	while ($row = $res->fetch_assoc()) {
 
-		echo "<a href=\"info-oeuvre.php?id={$row['ovr_id']}\" class=\"mosaic-tile\">";
-		echo "<img src=\"assets/oeuvres/{$row['ovr_img']}\">";
-		echo "<h3>{$row['ovr_titre']}</h3>";
+		echo "<a href=\"info-exposant.php?id={$row['exp_id']}\" class=\"mosaic-tile\">";
+		echo "<img src=\"assets/artistes/{$row['exp_img']}\">";
+		echo "<h3>{$row['exp_prenom']} {$row['exp_nom']}</h3>";
 		echo "</a>";
 	}
 
 	?>
-
-	</div>
 
 
 </div>
@@ -55,3 +51,5 @@
 
 
 </html>
+
+

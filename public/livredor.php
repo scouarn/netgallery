@@ -13,53 +13,51 @@
 	include 'scripts/connexion_bdd.php';
 ?>
 
-
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
+<div class="content">
 
 
-<h2 class="section-title">Livre d'or</h2>
+	<h2 class="section-title">Livre d'or</h2>
 
-<table class='w3-table-all'>
-<tr>
-	<th>Visiteur</th>
-	<th>Date</th>
-	<th>Texte</th>
-</tr>
+	<table class='w3-table-all'>
+	<tr>
+		<th>Visiteur</th>
+		<th>Date</th>
+		<th>Texte</th>
+	</tr>
 
-<?php 
+	<?php 
 
-$query = "SELECT * FROM T_COMMENTAIRE_COM
-	JOIN T_VISITEUR_VIS USING(vis_id)
-	WHERE com_valid = 'OK'
-	ORDER BY vis_date DESC;
-";
+	$query = "SELECT * FROM T_COMMENTAIRE_COM
+		JOIN T_VISITEUR_VIS USING(vis_id)
+		WHERE com_valid = 'OK'
+		ORDER BY vis_date DESC;
+	";
 
-$res = $mysqli->query($query);
+	$res = $mysqli->query($query);
 
-if ($res == false) {
-	echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
-}
-else
-while ($row = $res->fetch_assoc()) {
-
-	if ($row['vis_prenom']) {
-		$nom = $row['vis_prenom'];
+	if ($res == false) {
+		echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
 	}
-	else {
-		$nom = "anonyme";
+	else
+	while ($row = $res->fetch_assoc()) {
+
+		if ($row['vis_prenom']) {
+			$nom = $row['vis_prenom'];
+		}
+		else {
+			$nom = "anonyme";
+		}
+
+		echo "<tr>";
+		echo "<td>{$nom}</td>";
+		echo "<td>{$row['vis_date']}</td>";
+		echo "<td>{$row['com_text']}</td>";
+		echo "</tr>";
+
 	}
 
-	echo "<tr>";
-	echo "<td>{$nom}</td>";
-	echo "<td>{$row['vis_date']}</td>";
-	echo "<td>{$row['com_text']}</td>";
-	echo "</tr>";
-
-}
-
-?>
-</table>
+	?>
+	</table>
 
 </div>
 

@@ -1,0 +1,103 @@
+body {
+	font-size: 14pt;
+}
+
+form {
+  width: 50%;
+  display: block;
+  margin: auto;
+  text-align: right;
+}
+
+form div {
+  padding: 2px;
+}
+
+form select, input,  {
+	width: 50%;
+}
+
+
+.banner {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	display: table;
+	table-layout: fixed;
+	text-align: center;
+
+	
+	background-color: white;
+	box-shadow: 0px 2px 10px #CCCCCC;
+}
+
+
+.banner-item {
+	display: table-cell;
+	height: 100%;
+	margin: 0;
+	vertical-align: middle;
+	text-decoration: none;
+	font-size: large;
+}
+
+.banner-item:hover {
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
+
+
+.section-title {
+	margin-top: 2em;
+}
+
+.content {
+	max-width: 80vw;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+
+.mosaic {
+	display: grid;
+	grid-column-gap: 10px;
+	grid-row-gap: 2em;
+	grid-template-columns: repeat(3, 1fr);
+	grid-row-gap: 5em;
+}
+
+
+.mosaic-tile {
+	text-decoration-line: none;
+	display: block
+
+}
+
+.mosaic-tile img {
+	margin-top: 2em;
+	max-width: 80%;
+}
+
+.mosaic-tile h3 {
+}
+
+.mosaic-tile:hover {
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
+
+
+.liste {
+	margin: auto;
+	padding: 1em;
+	display: table;
+	text-align: left;
+}
+
+
+.description img {
+	max-height: 50vh;
+	width: auto;
+}

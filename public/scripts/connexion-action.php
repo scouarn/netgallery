@@ -42,8 +42,6 @@ else {
 
 
 echo "<a href='../staff.php'>Cliquez pour être redirigé.</>";
-
-
 $mysqli->close();
 
 ?>
