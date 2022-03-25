@@ -31,7 +31,7 @@
 
 	while ($row = $res->fetch_assoc()) {
 
-		echo "<a href=\"info-oeuvre.php?id={$row['ovr_id']}\" class=\"mosaic-tile\">";
+		echo "<a href=\"info-oeuvre.php?id={$row['ovr_id']}\" class=\"mosaic-tile card\">";
 		echo "<img src=\"assets/oeuvres/{$row['ovr_img']}\">";
 		echo "<h3>{$row['ovr_titre']}</h3>";
 		echo "</a>";
