@@ -24,17 +24,12 @@
 
 	<a href="index.php#about" onclick="w3_close()" class="w3-bar-item w3-button">À propos</a>
 	<a href="index.php#news" onclick="w3_close()" class="w3-bar-item w3-button">Actualités</a>
-	<a href="index.php#livredor" onclick="w3_close()" class="w3-bar-item w3-button">Livre d'or</a>
-	<a href="gallery.php#oeuvres" onclick="w3_close()" class="w3-bar-item w3-button">Oeuvres</a>
-	<a href="gallery.php#artistes" onclick="w3_close()" class="w3-bar-item w3-button">Artistes</a>
+	<a href="livredor.php" onclick="w3_close()" class="w3-bar-item w3-button">Livre d'or</a>
+	<a href="gallerie.php" onclick="w3_close()" class="w3-bar-item w3-button">Oeuvres</a>
+	<a href="artistes.php" onclick="w3_close()" class="w3-bar-item w3-button">Artistes</a>
 	<a href="staff.php" onclick="w3_close()" class="w3-bar-item w3-button">Accès personnel</a>
 </nav>
 
 
 
 
-<!-- !PAGE CONTENT! -->
-<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px">
-
-
-<div class="w3-container w3-padding-32 w3-center">

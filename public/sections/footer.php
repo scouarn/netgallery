@@ -1,5 +1,3 @@
-<!-- End page content -->
-</div>
 
 <script>
 // Script to open and close sidebar

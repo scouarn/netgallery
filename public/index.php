@@ -13,12 +13,12 @@
 	include 'scripts/connexion_bdd.php';
 ?>
 
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding w3-center" style="max-width:1200px;margin-top:100px">
 
 
-<!-- About Section -->
-<hr id="about">
-<div class="w3-container w3-padding-32 w3-center">  
-	<h3>À propos</h3><br>
+
+	<h2 class="section-title">À propos</h2>
 
 	<?php 
 		$query = "SELECT * FROM T_PRESENTATION_PRE;";
@@ -40,14 +40,10 @@
 	 ?></ul>
 	</div>
 
-	<a href="gallery.php" class="w3-xlarge w3-padding-16">Accéder à la gallerie.</a>
-</div>
+	<a href="gallerie.php" class="w3-xlarge w3-padding-16">Accéder à la gallerie.</a>
 
 
-<!-- News Section -->
-<hr id="news">
-<div class="w3-container w3-padding-32 w3-center">  
-	<h3>Actualités</h3><br>
+	<h2 class="section-title">Actualités</h2>
 
 	<table class='w3-table-all'>
 	<tr>
@@ -73,56 +69,8 @@
 
 	?>
 	</table>
-	<p>*les fichiers html seront insérés sur la page</p>
+	<p>*les fichiers seront insérés sur la page</p>
 
-</div>
-
-
-<!-- Livre d'or -->
-<hr id="livredor">
-<div class="w3-container w3-padding-32 w3-center">  
-	<h3>Livre d'or</h3>
-
-	<table class='w3-table-all'>
-	<tr>
-		<th>Visiteur</th>
-		<th>Date</th>
-		<th>Texte</th>
-	</tr>
-
-	<?php 
-
-	$query = "SELECT * FROM T_COMMENTAIRE_COM
-		JOIN T_VISITEUR_VIS USING(vis_id)
-		WHERE com_valid = 'OK'
-		ORDER BY vis_date DESC;
-	";
-
-	$res = $mysqli->query($query);
-
-	if ($res == false) {
-		echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
-	}
-	else
-	while ($row = $res->fetch_assoc()) {
-
-		if ($row['vis_prenom']) {
-			$nom = $row['vis_prenom'];
-		}
-		else {
-			$nom = "anonyme";
-		}
-
-		echo "<tr>";
-		echo "<td>{$nom}</td>";
-		echo "<td>{$row['vis_date']}</td>";
-		echo "<td>{$row['com_text']}</td>";
-		echo "</tr>";
-
-	}
-
-	?>
-	</table>
 </div>
 
 

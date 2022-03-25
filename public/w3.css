@@ -13,10 +13,28 @@
 	right: 0%;
 }
 
-#list-dates li {
-
+.mosaic {
+	display: grid;
+	grid-column-gap: 10px;
+	grid-row-gap: 2em;
+	grid-template-columns: repeat(3, 1fr);
 }
 
+
+.mosaic-tile {
+	display: block;
+}
+
+.mosaic-tile img {
+	margin-top: 2em;
+	max-width: 80%;
+	height: auto;
+}
+
+.mosaic-tile:hover {
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
 
 
 form {
@@ -34,7 +52,9 @@ form select, input,  {
 	width: 50%;
 }
 
-
+.section-title {
+	margin-top: 2em;
+}
 
 
 /* W3.CSS 4.15 December 2020 by Jan Egil and Borge Refsnes */
