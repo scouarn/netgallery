@@ -57,43 +57,43 @@ INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Je retournerai', 'OK', 5);
 
 
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Conway', 'John', 'Mathématicien 1937-2020', NULL, NULL, 'conway.jpg', 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Gardner', 'Martin', 'Mathématicien 1914-2010', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Golomb', 'Solomon', 'Mathématicien 1932-2016', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Michie', 'Donald', 'Chercheur en intélligence artificielle 1929-2007', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Sparks', 'Ben', '', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Sanderson', 'Grant', 'Créateur de 3Blue1Brown', NULL, NULL, NULL, 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Gardner', 'Martin', 'Mathématicien 1914-2010', NULL, NULL, 'Martin_Gardner.jpeg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Golomb', 'Solomon', 'Mathématicien 1932-2016', NULL, NULL, 'Solomon_Golomb_2014.jpg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Michie', 'Donald', 'Chercheur en intélligence artificielle 1929-2007', NULL, NULL, 'donald-michie-2003.jpg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Sparks', 'Ben', '', NULL, 'https://www.bensparks.co.uk/', 'Ben-black-shot-dark.jpg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Sanderson', 'Grant', 'Créateur de 3Blue1Brown', NULL, NULL, '3b1b.jpg', 'gEstionnaire');
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Droguet', 'Emmanuel', 'Prof de maths en prépa PCSI à Kérichen', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Rubik', 'Ernő', 'Architecte', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Lucas', 'Édouard', 'Mathématicien 1842-1891', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Cirulli', 'Gabriele', 'Développeur web italien', NULL, NULL, NULL, 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Rubik', 'Ernő', 'Architecte', NULL, NULL, 'rubik.jpg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Lucas', 'Édouard', 'Mathématicien 1842-1891', NULL, NULL, 'Elucas.png', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Cirulli', 'Gabriele', 'Développeur web italien', NULL, 'https://github.com/gabrielecirulli', 'gabriele-cirulli.jpg', 'gEstionnaire');
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Zamkauskas', 'Walter', 'Argentin', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Loyd', 'Sam', 'Mathématicien et joueur d\'échecs 1841-1911', NULL, NULL, NULL, 'gEstionnaire');
-INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Paterson', 'Mike', 'Informaticien', NULL, NULL, NULL, 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Loyd', 'Sam', 'Mathématicien et joueur d\'échecs 1841-1911', NULL, NULL, 'Samuel_Loyd.jpg', 'gEstionnaire');
+INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Paterson', 'Mike', 'Informaticien', NULL, NULL, 'Michael-Paterson.jpg', 'gEstionnaire');
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Jeu de la vie', '1970', 'Célèbre automate cellulaire.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Jeu de la vie', '1970', 'Célèbre automate cellulaire.', 'Gospers_glider_gun.gif');
 INSERT INTO TJ_EXP_OVR VALUES (1, 1);
 
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Jeu des pousses', '1967', 'Jeu de graphes qui se joue avec un papier et un crayon.', NULL);
 INSERT INTO TJ_EXP_OVR VALUES (1, 2);
 INSERT INTO TJ_EXP_OVR VALUES (13, 2);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Problème de l\'ange', '1974', 'Un ange se déplace d\'un certain nombre de cases sur une grille infinie, à chaque tour le démon peut bloquer une case, arrivera-t-il à bloquer l\'ange ?', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Problème de l\'ange', '1974', 'Un ange se déplace d\'un certain nombre de cases sur une grille infinie, à chaque tour le démon peut bloquer une case, arrivera-t-il à bloquer l\'ange ?', 'ange.png');
 INSERT INTO TJ_EXP_OVR VALUES (1, 3);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Pentamino', '1953', 'Jeu ayant inspiré Tetris mais avec 18 pièces de 5 carrés.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Pentamino', '1953', 'Jeu ayant inspiré Tetris mais avec 18 pièces de 5 carrés.', 'Pentominoes.JPG');
 INSERT INTO TJ_EXP_OVR VALUES (2, 4);
 INSERT INTO TJ_EXP_OVR VALUES (3, 4);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Menace', '1961', 'Machine Educable Noughts and Crosses Engine : Une intelligence artificielle pour le morpion faite de 304 boîtes d\'allumettes.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'MENACE', '1961', 'Machine Educable Noughts and Crosses Engine : Une intelligence artificielle pour le morpion faite de 304 boîtes d\'allumettes.', 'menace.jpg');
 INSERT INTO TJ_EXP_OVR VALUES (4, 5);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Je du chat et de la souris', '2019', 'Une souris essaye de sortir d\'une marre circulaire mais un chat essaye de l\'attrapper, ce dernier se déplace sur le périmètre du cercle.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Je du chat et de la souris', '2019', 'Une souris essaye de sortir d\'une marre circulaire mais un chat essaye de l\'attrapper, ce dernier se déplace sur le périmètre du cercle.', 'catmouse.png');
 INSERT INTO TJ_EXP_OVR VALUES (5, 6);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Fléchettes rétrécissantes', '2019', 'Plus la fléchette atterri proche du centre, moins la cible rétrécit.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Fléchettes rétrécissantes', '2019', 'Plus la fléchette atterri proche du centre, moins la cible rétrécit.', 'darts.png');
 INSERT INTO TJ_EXP_OVR VALUES (6, 7);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Tir complexe', '2010', 'Un nombre ou plusieurs sont affichés sur le plan complexe et une opération est donnée, le but est de placer la résultat sur le plan.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Tir complexe', '2010', 'Un nombre ou plusieurs sont affichés sur le plan complexe et une opération est donnée, le but est de placer la résultat sur le plan.', 'tir.png');
 INSERT INTO TJ_EXP_OVR VALUES (7, 8);
 
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Rubik\'s Cube', '1974', 'Célèbre puzzle cubique.', 'rubiks_cube.jpg');
@@ -102,11 +102,11 @@ INSERT INTO TJ_EXP_OVR VALUES (8, 9);
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Les tours de Hanoi', '1883', 'Jeu d\'origine indienne dont le but est de déplacer une pile de disques en étant limité à trois positions et en gardant les tailles des disques décroissantes.', 'hanoi.jpg');
 INSERT INTO TJ_EXP_OVR VALUES (9, 10);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, '2048', '2014', 'Jeu célèbre où l\'on fusionne des cellules sur une grille.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, '2048', '2014', 'Jeu célèbre où l\'on fusionne des cellules sur une grille.', '2048.png');
 INSERT INTO TJ_EXP_OVR VALUES (10, 11);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Amazons', '1988', 'Jeu qui se joue sur une grille et dont les pièces se déplacent comme les dames des échecs, à chaque mouvement la pièce tir une flèche et bloque une case.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Amazons', '1988', 'Jeu qui se joue sur une grille et dont les pièces se déplacent comme les dames des échecs, à chaque mouvement la pièce tir une flèche et bloque une case.', 'amazons.png');
 INSERT INTO TJ_EXP_OVR VALUES (11, 12);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Taquin', '1870', 'Jeu qui se joue avec une grille de 4x4 et 15 pièces qui peuvent être glissées sur la case vacantes, le but étant de remettre les pièces dans l\'ordre mais ce n\'est pas toujours possible suivant la configuration de départ.', NULL);
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Taquin', '1870', 'Jeu qui se joue avec une grille de 4x4 et 15 pièces qui peuvent être glissées sur la case vacantes, le but étant de remettre les pièces dans l\'ordre mais ce n\'est pas toujours possible suivant la configuration de départ.', 'taquin.png');
 INSERT INTO TJ_EXP_OVR VALUES (12, 13);
