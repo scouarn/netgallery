@@ -56,7 +56,8 @@ elseif ($row = $res->fetch_assoc()) {
 
 	echo "Connexion réussie.<br/>";
 	echo "Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
-	done();
+	$mysqli->close();
+	header("Location:../admin_acceuil.php");
 
 }
 else {
