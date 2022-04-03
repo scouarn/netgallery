@@ -42,7 +42,8 @@
 	<tr>
 		<th>Auteur</th>
 		<th>Date</th>
-		<th>Fichier*</th>
+		<th>Titre</th>
+		<th>Corps</th>
 	</tr>
 
 	<?php 
@@ -54,15 +55,15 @@
 
 		echo "<tr>";
 		echo "<td>{$row['cpt_login']}</td>";
-		echo "<td>{$row['new_date']}</td>";
-		echo "<td><a href='news/{$row['new_html']}'>{$row['new_html']}</a></td>";
+		echo "<td>{$row['new_date']} </td>";
+		echo "<td>{$row['new_titre']}</td>";
+		echo "<td>{$row['new_texte']}</td>";
 		echo "</tr>";
 
 	}
 
 	?>
 	</table>
-	<p>*les fichiers seront insérés sur la page</p>
 
 </div>
 

@@ -31,7 +31,8 @@ CREATE TABLE T_PROFIL_PRO (
 CREATE TABLE T_NEWS_NEW (
 	new_id 			INT 			AUTO_INCREMENT,
 	new_date		DATETIME		NOT NULL,
-	new_html		VARCHAR(256)	NOT NULL, # fichier html avec le contenu de l'article
+	new_titre		VARCHAR(256)	NOT NULL,
+	new_texte		VARCHAR(2048)	NOT NULL,
 	cpt_login 		VARCHAR(64) 	CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
 
 	PRIMARY KEY(new_id),

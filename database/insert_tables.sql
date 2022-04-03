@@ -33,11 +33,11 @@ INSERT INTO T_PROFIL_PRO VALUES ('mel', 'Anfaillite', 'Mélusine', 'melusine.anf
 
 
 
-INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), 'new0.html', 'gEstionnaire');
-INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), 'new1.html', 'gEstionnaire');
-INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), 'new2.html', 'admin');
-INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), 'new3.html', 'vmarc');
-INSERT INTO T_NEWS_NEW VALUES (NULL, NOW(), 'new4.html', 'gEstionnaire');
+INSERT INTO T_NEWS_NEW VALUES (NULL, "2022-01-01", 'Ouverture', 'La gallerie ouvre ses portes.', 'gEstionnaire');
+INSERT INTO T_NEWS_NEW VALUES (NULL, "2022-02-01", 'Bienvenue', 'Bienvenue sur le site de la gallerie.', 'gEstionnaire');
+INSERT INTO T_NEWS_NEW VALUES (NULL, "2022-03-01", 'Livre d\'or', 'Vous pouvez poster votre avis sur le livre d\'or en ligne.', 'admin');
+INSERT INTO T_NEWS_NEW VALUES (NULL, "2022-03-02", 'Actualités', 'Ici sont postées les nouvelles.', 'vmarc');
+INSERT INTO T_NEWS_NEW VALUES (NULL, "2022-04-01", 'Poisson d\'avril', 'Veuillez redoubler de prudence car cette année le 1er avril tombera un vendredi 13.', 'gEstionnaire');
 
 
 
@@ -53,7 +53,7 @@ INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Super musée !', 'OK', 1);
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Musée pas terrible', 'OK', 2);
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'J\'ai bien aimé', 'OK', 3);
 INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'C\'était joli', 'OK', 4);
-INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Je retournerai', 'OK', 5);
+INSERT INTO T_COMMENTAIRE_COM VALUES (NULL, NOW(), 'Moche', 'KO', 5);
 
 
 INSERT INTO T_EXPOSANT_EXP VALUES (NULL, 'Conway', 'John', 'Mathématicien 1937-2020', NULL, NULL, 'conway.jpg', 'gEstionnaire');
@@ -87,7 +87,7 @@ INSERT INTO TJ_EXP_OVR VALUES (3, 4);
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'MENACE', '1961', 'Machine Educable Noughts and Crosses Engine : Une intelligence artificielle pour le morpion faite de 304 boîtes d\'allumettes.', 'menace.jpg');
 INSERT INTO TJ_EXP_OVR VALUES (4, 5);
 
-INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Je du chat et de la souris', '2019', 'Une souris essaye de sortir d\'une marre circulaire mais un chat essaye de l\'attrapper, ce dernier se déplace sur le périmètre du cercle.', 'catmouse.png');
+INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Problème du chat et de la souris', '2019', 'Une souris essaye de sortir d\'une marre circulaire mais un chat essaye de l\'attrapper, ce dernier se déplace sur le périmètre du cercle.', 'catmouse.png');
 INSERT INTO TJ_EXP_OVR VALUES (5, 6);
 
 INSERT INTO T_OEUVRE_OVR VALUES (NULL, 'Fléchettes rétrécissantes', '2019', 'Plus la fléchette atterri proche du centre, moins la cible rétrécit.', 'darts.png');
