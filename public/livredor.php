@@ -41,15 +41,8 @@
 	else
 	while ($row = $res->fetch_assoc()) {
 
-		if ($row['vis_prenom']) {
-			$nom = $row['vis_prenom'];
-		}
-		else {
-			$nom = "anonyme";
-		}
-
 		echo "<tr>";
-		echo "<td>{$nom}</td>";
+		echo "<td>{$row['vis_prenom']}</td>";
 		echo "<td>{$row['vis_date']}</td>";
 		echo "<td>{$row['com_text']}</td>";
 		echo "</tr>";

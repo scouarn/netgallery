@@ -1,7 +1,7 @@
 
 <?php 
 
-// prevent mokey error throwing to enable error handling
+// prevent error throwing
 mysqli_report(MYSQLI_REPORT_OFF);
 
 $mysqli = new mysqli('localhost','zscouarjo','i5zs2qkh','zfl2-zscouarjo');

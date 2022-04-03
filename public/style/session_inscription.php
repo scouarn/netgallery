@@ -1,12 +1,8 @@
 <?php 
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
-
-function finish() {
-	echo "<a href='../staff.php'>Cliquez pour être redirigé.<a/>";
+function done() {
+	echo "<a href='../index.php'>Cliquez pour être redirigé.<a/>";
 
 	if (isset($mysqli)) {
 		$mysqli->close();
@@ -23,7 +19,7 @@ if ($_POST['pseudo']) {
 }
 else {
 	echo "Le pseudo ne peut pas être vide.<br/>";
-	finish();
+	done();
 }
 
 if ($_POST['mdp']) {
@@ -31,7 +27,7 @@ if ($_POST['mdp']) {
 }
 else {
 	echo "Le mot de passe ne peut pas être vide.<br/>";
-	finish();
+	done();
 }
 
 if ($_POST['mdp_conf']) {
@@ -39,13 +35,13 @@ if ($_POST['mdp_conf']) {
 
 	if($mdp_conf != $inputs['mdp'])	{
 		echo "Les mots de passe sont différents.<br/>";
-		finish();
+		done();
 	}
 
 }
 else {
 	echo "Veuillez confirmer votre mot de passe.<br/>";
-	finish();
+	done();
 }
 
 
@@ -54,7 +50,7 @@ if ($_POST['nom']) {
 }
 else {
 	echo "Le nom ne peut pas être vide.<br/>";
-	finish();
+	done();
 }
 
 if ($_POST['prenom']) {
@@ -62,7 +58,7 @@ if ($_POST['prenom']) {
 }
 else {
 	echo "Le prénom ne peut pas être vide.<br/>";
-	finish();
+	done();
 }
 
 if ($_POST['mail']) {
@@ -70,7 +66,7 @@ if ($_POST['mail']) {
 }
 else {
 	echo "L'adresse email ne peut pas être vide.<br/>";
-	finish();
+	done();
 }
 
 if ($_POST['role']) {
@@ -78,7 +74,7 @@ if ($_POST['role']) {
 }
 else {
 	echo "Vous devez choisir un rôle.<br/>";
-	finish();
+	done();
 }
 
 
@@ -106,7 +102,7 @@ if ($res == false) {
 	else {
 		echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
 	}
-	finish();
+	done();
 
 }
 
@@ -137,11 +133,11 @@ if ($res == false) {
 	if ($res == false) {
 		echo "Impossible de supprimer le compte créé.<br/>";
 		echo("Erreur SQL : " . $mysqli->errno . " : " . $mysqli->error . "<br/>");
-		finish();
+		done();
 	}
 	
 	echo "Compte supprimé.<br/>";	
-	finish();
+	done();
 }
 
 
@@ -149,7 +145,7 @@ if ($res == false) {
 echo "Inscription réussie. Votre compte n'est pas encore activé.<br/>";
 echo "Bienvenue {$inputs['pseudo']}.<br/>";
 
-finish();
+done();
 
 
 ?>

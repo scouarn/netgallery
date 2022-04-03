@@ -26,8 +26,7 @@
 	// oeuvre inconnue
 	if (!$exp) {
 		$mysqli->close();
-		header('Location: artistes.php');
-		exit;
+		header('Location: exposants.php');
 	}
 
 	$query = "SELECT ovr_id, ovr_titre 
@@ -53,7 +52,7 @@
 		<?php 
 
 		while ($row = $ovr->fetch_assoc()) {
-			echo "<li><a href=\"info-oeuvre.php?id={$row['ovr_id']}\">";
+			echo "<li><a href=\"oeuvre_info.php?id={$row['ovr_id']}\">";
 			echo "{$row['ovr_titre']}";
 			echo "</a></li>";
 		}

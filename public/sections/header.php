@@ -7,7 +7,7 @@
     <a class="banner-item card" href="exposants.php">Exposants</a>
     <a class="banner-item card" href="livredor.php">Livre d'or</a>
     
-    <a class="banner-item card" href="staff.php">Accès personnel</a>
+    <a class="banner-item card" href="admin_acceuil.php">Accès personnel</a>
 
 </div>
 

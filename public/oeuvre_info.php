@@ -27,7 +27,6 @@
 	if (!$ovr) {
 		$mysqli->close();
 		header('Location: gallerie.php');
-		exit;
 	}
 
 	$query = "SELECT exp_id, exp_nom, exp_prenom 
@@ -54,7 +53,7 @@
 
 		while ($row = $exp->fetch_assoc()) {
 
-			echo "<li><a href=\"info-exposant.php?id={$row['exp_id']}\">";
+			echo "<li><a href=\"exposant_info.php?id={$row['exp_id']}\">";
 			echo "{$row['exp_nom']} {$row['exp_prenom']}";
 			echo "</a></li>";
 

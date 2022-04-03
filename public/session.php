@@ -19,7 +19,7 @@
 
 	<h2 class="section-title">Connexion</h2>
 
-	<form action="scripts/connexion-action.php" method="post">
+	<form action="session_connexion.php" method="post">
 
 		<div>
 			<label for="pseudo">Pseudo</label>
@@ -39,7 +39,7 @@
 
 	<h2 class="section-title">Inscription</h2>
 
-	<form action="scripts/inscription-action.php" method="post">
+	<form action="session_inscription.php" method="post">
 
 		<div>
 			<label for="pseudo">Pseudo</label>
@@ -91,7 +91,7 @@
 
 <?php 
 	include 'sections/footer.php';
-	//$mysqli->close();
+	$mysqli->close();
 ?>
 </body>
 
