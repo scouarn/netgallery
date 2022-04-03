@@ -19,7 +19,6 @@
 <?php 
 	include 'sections/header.php';
 	include 'scripts/connexion_bdd.php';
-	include 'scripts/debug.php';
 ?>
 
 
@@ -29,7 +28,7 @@
 	<div class="w3-container w3-padding-32 w3-center">
 
 
-	<a class="card" href="session_destroy.php" style="padding: 10px;">	
+	<a class="card" href="scripts/session_destroy.php" style="padding: 10px;">	
 		Déconnexion
 	</a>
 

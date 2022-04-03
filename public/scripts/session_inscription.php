@@ -2,7 +2,7 @@
 
 
 function done() {
-	echo "<a href='session.php'>Cliquez pour être redirigé.<a/>";
+	echo "<a href='../session.php'>Cliquez pour être redirigé.<a/>";
 
 	if (isset($mysqli)) {
 		$mysqli->close();
@@ -79,7 +79,7 @@ else {
 
 
 
-include "connexion_bdd.php";
+include "../connexion_bdd.php";
 
 // ==================
 // CREATION DU COMPTE

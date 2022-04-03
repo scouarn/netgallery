@@ -1,12 +1,12 @@
 
 <?php 
 
-include "scripts/debug.php";
+include "../scripts/debug.php";
 
 
 function done() {
 	if (isset($mysqli)) $mysqli->close();
-	echo "<a href='admin_acceuil.php'>Cliquez pour être redirigé.<a/>";
+	echo "<a href='../admin_acceuil.php'>Cliquez pour être redirigé.<a/>";
 	// header("Location:admin_acceuil.php");
 	exit;
 }
@@ -26,7 +26,7 @@ else {
 
 
 
-include "scripts/connexion_bdd.php";
+include "../scripts/connexion_bdd.php";
 
 $query = "SELECT * FROM T_PROFIL_PRO 
           JOIN T_COMPTE_CPT USING(cpt_login) 
