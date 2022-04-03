@@ -23,13 +23,13 @@ INSERT INTO T_COMPTE_CPT VALUES ('rld', MD5('rorodumusee84'));
 INSERT INTO T_PROFIL_PRO VALUES ('rld', 'Le Duc', 'Robert', 'robert.leduc@netgallery.localhost', 'A', 'O', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('martin', MD5('LWDCbvy3'));
-INSERT INTO T_PROFIL_PRO VALUES ('martin', 'Martin', 'Martin', 'martin.martin@netgallery.localhost', 'A', 'O', NOW());
+INSERT INTO T_PROFIL_PRO VALUES ('martin', 'Martin', 'Martin', 'martin.martin@netgallery.localhost', 'D', 'O', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('ytroloin', MD5('motdepasse'));
 INSERT INTO T_PROFIL_PRO VALUES ('ytroloin', 'Troloin', 'Yvon', 'yvon.troloin@netgallery.localhost', 'A', 'O', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('mel', MD5('anF_43!lem='));
-INSERT INTO T_PROFIL_PRO VALUES ('mel', 'Anfaillite', 'Mélusine', 'melusine.anfaillite@netgallery.localhost', 'A', 'O', NOW());
+INSERT INTO T_PROFIL_PRO VALUES ('mel', 'Anfaillite', 'Mélusine', 'melusine.anfaillite@netgallery.localhost', 'D', 'O', NOW());
 
 
 

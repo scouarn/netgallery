@@ -14,7 +14,7 @@ function done() {
 
 $inputs = array();
 
-if ($_POST['pseudo']) {
+if (isset($_POST['pseudo'])) {
 	$inputs['pseudo'] = htmlspecialchars(addslashes($_POST['pseudo']));
 }
 else {
@@ -22,7 +22,7 @@ else {
 	done();
 }
 
-if ($_POST['mdp']) {
+if (isset($_POST['mdp'])) {
 	$inputs['mdp'] = htmlspecialchars(addslashes($_POST['mdp']));
 }
 else {
@@ -30,7 +30,7 @@ else {
 	done();
 }
 
-if ($_POST['mdp_conf']) {
+if (isset($_POST['mdp_conf'])) {
 	$mdp_conf = htmlspecialchars(addslashes($_POST['mdp_conf']));
 
 	if($mdp_conf != $inputs['mdp'])	{
@@ -45,7 +45,7 @@ else {
 }
 
 
-if ($_POST['nom']) {
+if (isset($_POST['nom'])) {
 	$inputs['nom'] = htmlspecialchars(addslashes($_POST['nom']));
 }
 else {
@@ -53,7 +53,7 @@ else {
 	done();
 }
 
-if ($_POST['prenom']) {
+if (isset($_POST['prenom'])) {
 	$inputs['prenom'] = htmlspecialchars(addslashes($_POST['prenom']));
 }
 else {
@@ -61,7 +61,7 @@ else {
 	done();
 }
 
-if ($_POST['mail']) {
+if (isset($_POST['mail'])) {
 	$inputs['mail'] = htmlspecialchars(addslashes($_POST['mail']));
 }
 else {
@@ -69,7 +69,7 @@ else {
 	done();
 }
 
-if ($_POST['role']) {
+if (isset($_POST['role'])) {
 	$inputs['role'] = htmlspecialchars(addslashes($_POST['role']));
 }
 else {

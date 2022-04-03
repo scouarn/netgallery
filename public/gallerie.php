@@ -9,7 +9,7 @@
 
 <?php 
 
-	include 'sections/header.php';
+	include 'sections/banner.php';
 	include 'scripts/connexion_bdd.php';
 
 	$query = "SELECT * FROM T_OEUVRE_OVR;";

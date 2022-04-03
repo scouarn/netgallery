@@ -12,7 +12,7 @@ function done() {
 }
 
 
-if ($_POST['pseudo'] && $_POST['mdp']) {
+if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 
 	$login = htmlspecialchars(addslashes($_POST['pseudo']));
 	$mdp   = htmlspecialchars(addslashes($_POST['mdp']));

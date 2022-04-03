@@ -14,7 +14,7 @@
 	}
 
 
-	include 'sections/header.php';
+	include 'sections/banner.php';
 	include 'scripts/connexion_bdd.php';
 
 
