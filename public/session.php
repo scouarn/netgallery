@@ -25,7 +25,7 @@
 		</div>
 
 		<div>
-			<label for="pseudo">Mot de passe</label>
+			<label for="mdp">Mot de passe</label>
 			<input type="password" name="mdp" />
 		</div>
 
@@ -45,7 +45,7 @@
 		</div>
 
 		<div>
-			<label for="pseudo">Mot de passe</label>
+			<label for="mdp">Mot de passe</label>
 			<input type="password" name="mdp" />
 		</div>
 

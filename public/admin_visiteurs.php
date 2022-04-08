@@ -22,12 +22,44 @@
 
 <div class="content">
 
+	<?php 
+	include "sections/menu_admin.php";
+	?>
+
+
+	<h2 class='section-title'>Générer un ticket</h2>
+
+	<form id="ajout_com" action="scripts/visiteur_creation.php" method="post">
+		<div>
+			<label for="mdp">Mot de passe ticket</label>
+			<input pattern=".{15}" title="15 caractères" type="text" name="mdp" />
+		</div>
+
+		<div>
+			<input type="submit" value="Créer un ticket">
+		</div>
+
+	</form>
+
+	<br>
+
+	<form id="ajout_com" action="scripts/visiteur_creation.php" method="post">
+
+		<div>
+			<label for="mdp">Nombre de tickets à générer</label>
+			<input type="number" value=1 min=1>
+		</div>
+
+		<div>
+			<input type="submit" value="Créer avec MDP aléatoire">
+		</div>
+
+	</form>
+
+
+	<h2 class='section-title'>Visiteurs</h2>
+
 	<?php
-
-		include "sections/menu_admin.php";
-
-		echo "<h2 class='section-title'>Visiteurs</h2>";
-
 		$query = "SELECT * 
 		          FROM T_VISITEUR_VIS
 		          LEFT JOIN T_COMMENTAIRE_COM USING(vis_id)

@@ -58,7 +58,7 @@
 
 	<form id="ajout_com" action="scripts/visiteur_commentaire.php" method="post">
 		<div>
-			<label for="pseudo">Mot de passe ticket</label>
+			<label for="mdp">Mot de passe ticket</label>
 			<input type="password" name="mdp" />
 		</div>
 
