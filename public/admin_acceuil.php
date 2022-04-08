@@ -23,12 +23,10 @@
 <div class="content">
 
 
-	<h2 class="section-title">Administration</h2>
-
-	<a href="scripts/session_destroy.php">
-		<button>Déconnexion</button>
-	</a>
-
+	<?php 
+		include "sections/menu_admin.php";
+	?>
+	
 
 	<h2 class="section-title">Mon profil</h2>
 
@@ -62,59 +60,68 @@
 
 	<?php if ($_SESSION['role'] == 'A') {
 
-
-		echo "<h2 class='section-title'>Utilisateurs</h2>
-		      <table class='w3-table-all'>
-		      <tr>
-		      <th>Login</th>
-		      <th>Nom</th>
-		      <th>Prénom</th>
-		      <th>Email</th>
-		      <th>Rôle</th>
-		      <th>Date d'inscription</th>
-		      <th>Validité</th>
-		      </tr>";
-
-	
-
+		echo "<h2 class='section-title'>Utilisateurs</h2>";
 		$query = "SELECT * FROM T_PROFIL_PRO ORDER BY cpt_login;";
-
 		$res = $mysqli->query($query);
 
-		if ($res == false) {
-			echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
-		}
-		else while ($row = $res->fetch_assoc()) {
-			echo "<tr>";
+		if ($res != false) { 
 
-			echo "<td>{$row['cpt_login']}</td>
-			      <td>{$row['pro_nom']}</td>
-			      <td>{$row['pro_prenom']}</td>
-			      <td>{$row['pro_email']}</td>
-			      <td>{$row['pro_role']}</td>
-			      <td>{$row['pro_date']}</td>";
+			echo "<p>Il y a <b>{$res->num_rows}</b> profils.";
+
+			echo "<table class='w3-table-all'>
+			      <tr>
+			      <th>Login</th>
+			      <th>Nom</th>
+			      <th>Prénom</th>
+			      <th>Email</th>
+			      <th>Rôle</th>
+			      <th>Inscription</th>
+			      <th>Validité</th>
+			      </tr>";
+
+		
+			while ($row = $res->fetch_assoc()) {
+
+				echo "<tr>";
+
+				echo "<td>{$row['cpt_login']}</td>
+				      <td>{$row['pro_nom']}</td>
+				      <td>{$row['pro_prenom']}</td>
+				      <td>{$row['pro_email']}</td>
+				      <td>{$row['pro_role']}</td>
+				      <td>{$row['pro_date']}</td>";
 
 
-			if ($row['pro_valid'] == 'D') {
-				$color = "#ff7777";
-				$valid = "v=A";
-				$text  = "activer";
-			}
-			else {
-				$color = "#77ff77";
-				$valid = "v=D";
-				$text  = "désactiver";
-			}
+				if ($row['pro_valid'] == 'D') {
+					$color = "#ff7777";
+					$valid = "A";
+					$text  = "activer";
+				}
+				else {
+					$color = "#77ff77";
+					$valid = "D";
+					$text  = "désactiver";
+				}
 
-				echo "<td style='background-color:{$color};'>{$row['pro_valid']}
-				      <a href='scripts/admin_activation.php?id={$row['cpt_login']}&{$valid}'>
-				      <button>{$text}</button></a>
+				echo "<td style='background-color:{$color};'>";
+				echo "{$row['pro_valid']}";
+
+				echo "<form class='mini-form' action='scripts/comptes_activation.php' method='post'>
+				      <input name='login' type='hidden' value='{$row['cpt_login']}'>
+				      <input name='valid' type='hidden' value='{$valid}'>
+				      <input type='submit' value='{$text}'>
 					";
 
+				echo "</form></td>";
+
+
+
 				echo "</tr>";
+			}
+
+			echo "</table>";
 		}
 
-		echo "</table>";
 
 	}?>
 

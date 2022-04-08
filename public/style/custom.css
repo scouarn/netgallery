@@ -104,3 +104,9 @@ form select, input,  {
 .info-table th {
 	padding-right: 5em;
 }
+
+.mini-form {
+	hidden;
+	display: inline;
+	margin-left: 1em;	
+}

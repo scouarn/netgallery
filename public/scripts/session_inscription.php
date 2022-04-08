@@ -123,7 +123,7 @@ $res = $mysqli->query($query);
 
 if ($res == false) {
 	echo "Impossible de créer le profil.<br/>";
-	echo "Erreur SQL : " . $mysqli->errno . " : " . $mysqli->error . "<br/>";
+	echo "Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>";
 
 
 	$query = "DELETE FROM T_COMPTE_CPT WHERE cpt_login = '{$inputs['pseudo']}';";
