@@ -101,7 +101,7 @@ if ($res == false) {
 }
 
 $query = "INSERT INTO T_COMMENTAIRE_COM 
-          VALUES (NULL, NOW(), '{$inputs['comment']}', 'KO', {$id})
+          VALUES (NULL, NOW(), '{$inputs['comment']}', 'OK', {$id})
         ";
 
 // echo "{$query}<br/>";
@@ -112,7 +112,7 @@ if ($res == false) {
 	done();
 }
 
-echo "Commentaire en attente de validation.<br/>";
+echo "Commentaire ajouté.<br/>";
 done();
 
 ?>
