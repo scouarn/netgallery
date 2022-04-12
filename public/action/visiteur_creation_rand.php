@@ -32,8 +32,8 @@ for ($i = 0; $i < $n; $i++) {
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-		echo "Impossible de créer le ticket.<br/>";
+		// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		redirect_note("../admin_visiteurs.php", "$added tickets créés.", "Impossible de créer le ticket.");
 	}
 	else {
 		echo "Ajout OK<br/>";
@@ -42,7 +42,7 @@ for ($i = 0; $i < $n; $i++) {
 
 }
 
-redirect_note("../admin_visiteurs.php", "$added tickets créés.";
+redirect_note("../admin_visiteurs.php", "$added tickets créés.");
 $mysqli->close();
 
 ?>
