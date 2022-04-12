@@ -8,7 +8,8 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 }
 
 if (!isset($_POST['login']) || !isset($_POST['valid'])) {
-	header("Location:../admin_acceuil.php");
+	echo "Paramètres invalides.<br/>";
+	exit;
 }
 
 
@@ -25,12 +26,12 @@ $query = "UPDATE T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	echo "Impossible d'activer le compte.<br/>";
+	echo "Impossible d'activer ou de désactiver le profil.<br/>";
 	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 	exit;
 }
 else {
-	echo "Compte activé.<br/>";
+	echo $_POST['valid'] == "A" ? "Profil activé.<br/>" : "Profil désactivé.<br/>";
 	exit;
 }
 

@@ -8,7 +8,8 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 }
 
 if (!isset($_POST['id'])) {
-	header("Location:../admin_acceuil.php");
+    echo "ID visiteur incorrect<br/>";
+    exit;
 }
 
 

@@ -14,7 +14,7 @@ if (isset($_POST['mdp'])) {
 	   $mdp = $_POST['mdp'];
 	}
 	else {
-		echo "Format mdp incorrect<br/>";
+		echo "Format mdp incorrect<br/>"; // hacked html / made up request
 		exit;
 	}
 
