@@ -10,43 +10,48 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 }
 
 if (isset($_POST['mdp'])) {
-	// $mdp = substr( addslashes($_POST['mdp']), 0, 15);
-    $mdp = $_POST['mdp'];
+
+	if (preg_match("/[a-zA-Z0-9_]{15}/", $_POST['mdp'])) {
+	   $mdp = $_POST['mdp'];
+	}
+	else {
+		echo "Format mdp incorrect<br/>";
+		exit;
+	}
+
+}
+
+
+include "../action/connexion_bdd.php";
+
+
+$query = "INSERT INTO T_VISITEUR_VIS VALUES
+		  (NULL, '{$mdp}', NOW(), NULL, NULL, NULL, '{$_SESSION['login']}');
+	  ";
+		  
+
+echo "{$query}</br>";
+$res = $mysqli->query($query);
+
+if ($res == false) {
+
+	/* erreur unicité */
+	if ($mysqli->errno == 1062) {
+		echo "Ce ticket existe déjà !<br/>";
+		exit;
+	}
+	else {
+
+		echo("Impossible de créer le ticket : Erreur {$mysqli->errno}, {$mysqli->error}<br/>");
+		exit;
+	}
+	
 }
 else {
-    $mdp = "aaaaaaaaaaaaaaa";
+	echo "Ajout OK</br>";
+	exit;
 }
 
-
-if (isset($_POST['n'])) {
-    $n = $_POST['n'];
-}
-else {
-    $n = 1;
-}
-
-echo "OK : $mdp";
-
-// include "../action/connexion_bdd.php";
-
-
-
-// $query = "INSERT INTO T_VISITEUR_VIS VALUES
-//           (NULL, '{$mdp}', NOW(), NULL, NULL, NULL, '{$_SESSION['login']}');
-//           ";
-          
-
-// // echo "{$query}</br>";
-// $res = $mysqli->query($query);
-
-// if ($res == false) {
-//     echo "Impossible de créer le ticket.</br>";
-// }
-// else {
-
-//     header("Location:../admin_visiteurs.php");
-// }
-
-// $mysqli->close();
+$mysqli->close();
 
 ?>

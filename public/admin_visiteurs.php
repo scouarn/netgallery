@@ -26,13 +26,13 @@
 	include "sections/menu_admin.php";
 	?>
 
-
+<!-- pattern="[a-zA-Z0-9_]{15}" -->
 	<h2 class='section-title'>Générer un ticket</h2>
 
 	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
 		<div>
 			<label for="mdp">Mot de passe ticket</label>
-			<input required pattern="[a-zA-Z0-9_]{15}" title="15 caractères" type="text" name="mdp" />
+			<input required  title="15 caractères : (a-z A-Z 0-9 ou _)" type="text" name="mdp" />
 		</div>
 
 		<div>
