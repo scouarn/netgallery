@@ -23,10 +23,6 @@
 <div class="content">
 
 
-	<?php 
-		include "sections/menu_admin.php";
-	?>
-	
 
 	<h2 class="section-title">Mon profil</h2>
 

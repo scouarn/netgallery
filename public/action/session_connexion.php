@@ -1,8 +1,6 @@
 
 <?php 
 
-
-
 if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 
 	$login = htmlspecialchars(addslashes($_POST['pseudo']));
@@ -31,7 +29,7 @@ $query = "SELECT * FROM T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	echo "Connexion échouée.<br/>"
+	echo "Connexion échouée.<br/>";
 	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 	exit;
 }
@@ -43,7 +41,7 @@ elseif ($row = $res->fetch_assoc()) {
 	$_SESSION['login'] = $row['cpt_login'];
 	$_SESSION['role']  = $row['pro_role'];
 
-	echo "Connexion réussie.<br/>Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
+	echo "Connexion réussie. Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
 	exit;
 }
 else {

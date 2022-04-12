@@ -21,10 +21,7 @@
 
 
 <div class="content">
-
-	<?php 
-	include "sections/menu_admin.php";
-	?>
+	
 
 	<h2 class='section-title'>Générer un ticket</h2>
 
@@ -40,7 +37,6 @@
 
 	</form>
 
-	<br>
 
 	<h2 class='section-title'>Générer plusieurs tickets</h2>
 
@@ -48,7 +44,7 @@
 
 		<div>
 			<label for="n">Nombre de tickets à générer</label>
-			<input type="number" value=1 min=1 name="n">
+			<input type="number" value=1 min=1 max=100 name="n">
 		</div>
 
 		<div>
