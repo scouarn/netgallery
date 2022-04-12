@@ -38,7 +38,7 @@ if ($res == false) {
     exit;
 }
 else {
-    echo "Compte activé.<br/>";
+    echo "Visiteur supprimé.<br/>";
     exit;
 }
 
