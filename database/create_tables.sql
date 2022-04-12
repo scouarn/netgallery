@@ -79,7 +79,7 @@ CREATE TABLE TJ_EXP_OVR (
 
 CREATE TABLE T_VISITEUR_VIS (
 	vis_id 			INT 			AUTO_INCREMENT,
-	vis_mdp			CHAR(15)		NOT NULL,
+	vis_mdp			CHAR(15)		UNIQUE NOT NULL,
 	vis_date 		DATETIME		NOT NULL,
 	vis_nom 		VARCHAR(64),
 	vis_prenom 		VARCHAR(64),
