@@ -1,17 +1,5 @@
 <?php 
 
-
-function done() {
-	echo "<a href='../session.php'>Cliquez pour être redirigé.<a/>";
-
-	if (isset($mysqli)) {
-		$mysqli->close();
-	}
-
-	exit;
-}
-
-
 $inputs = array();
 
 if (isset($_POST['pseudo'])) {
@@ -19,7 +7,7 @@ if (isset($_POST['pseudo'])) {
 }
 else {
 	echo "Le pseudo ne peut pas être vide.<br/>";
-	done();
+	exit;
 }
 
 if (isset($_POST['mdp'])) {
@@ -27,7 +15,7 @@ if (isset($_POST['mdp'])) {
 }
 else {
 	echo "Le mot de passe ne peut pas être vide.<br/>";
-	done();
+	exit;
 }
 
 if (isset($_POST['mdp_conf'])) {
@@ -35,13 +23,13 @@ if (isset($_POST['mdp_conf'])) {
 
 	if($mdp_conf != $inputs['mdp'])	{
 		echo "Les mots de passe sont différents.<br/>";
-		done();
+		exit;
 	}
 
 }
 else {
 	echo "Veuillez confirmer votre mot de passe.<br/>";
-	done();
+	exit;
 }
 
 
@@ -50,7 +38,7 @@ if (isset($_POST['nom'])) {
 }
 else {
 	echo "Le nom ne peut pas être vide.<br/>";
-	done();
+	exit;
 }
 
 if (isset($_POST['prenom'])) {
@@ -58,7 +46,7 @@ if (isset($_POST['prenom'])) {
 }
 else {
 	echo "Le prénom ne peut pas être vide.<br/>";
-	done();
+	exit;
 }
 
 if (isset($_POST['mail'])) {
@@ -66,7 +54,7 @@ if (isset($_POST['mail'])) {
 }
 else {
 	echo "L'adresse email ne peut pas être vide.<br/>";
-	done();
+	exit;
 }
 
 if (isset($_POST['role'])) {
@@ -74,7 +62,7 @@ if (isset($_POST['role'])) {
 }
 else {
 	echo "Vous devez choisir un rôle.<br/>";
-	done();
+	exit;
 }
 
 
@@ -100,9 +88,9 @@ if ($res == false) {
 		echo "Ce pseudo est déjà utilisé !<br/>";
 	}
 	else {
-		echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 	}
-	done();
+	exit;
 
 }
 
@@ -123,29 +111,29 @@ $res = $mysqli->query($query);
 
 if ($res == false) {
 	echo "Impossible de créer le profil.<br/>";
-	echo "Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>";
+	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 
 
 	$query = "DELETE FROM T_COMPTE_CPT WHERE cpt_login = '{$inputs['pseudo']}';";
-	echo "{$query}<br/>";
+	// echo "{$query}<br/>";
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo "Impossible de supprimer le compte créé.<br/>";
-		echo("Erreur SQL : " . $mysqli->errno . " : " . $mysqli->error . "<br/>");
-		done();
+		echo "Impossible de supprimer le compte créé, veillez contacter un administrateur.<br/>";
+		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		exit;
+	}
+	else {
+		echo "Compte supprimé.<br/>";	
+		exit;
 	}
 	
-	echo "Compte supprimé.<br/>";	
-	done();
+}
+else {
+	echo "Inscription réussie. Votre compte n'est pas encore activé.<br/>";
+	exit;
 }
 
-
-
-echo "Inscription réussie. Votre compte n'est pas encore activé.<br/>";
-echo "Bienvenue {$inputs['pseudo']}.<br/>";
-
-done();
-
+$mysqli->close();
 
 ?>

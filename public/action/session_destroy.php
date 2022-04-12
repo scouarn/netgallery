@@ -1,5 +1,6 @@
 <?php 
 session_start();
 session_destroy();
-header("Location:../admin_acceuil.php");
+echo "Déconnexion réussie.<br/>";
+// header("Location:../admin_acceuil.php");
 ?>

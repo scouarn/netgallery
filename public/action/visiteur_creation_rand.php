@@ -33,16 +33,17 @@ for ($i = 0; $i < $n; $i++) {
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo("Impossible de créer le ticket : Erreur {$mysqli->errno}, {$mysqli->error}<br/>");	
+		echo "Impossible de créer le ticket.";
+		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 	}
 	else {
-		echo "Ajout OK</br>";
+		echo "Ajout OK<br/>";
 		$added++;
 	}
 
 }
 
-echo "$added tickets créés.</br>";
+echo "$added tickets créés.<br/>";
 $mysqli->close();
 
 ?>

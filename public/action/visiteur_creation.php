@@ -29,7 +29,7 @@ $query = "INSERT INTO T_VISITEUR_VIS VALUES
 	  ";
 		  
 
-echo "{$query}</br>";
+// echo "{$query}</br>";
 $res = $mysqli->query($query);
 
 if ($res == false) {
@@ -40,8 +40,8 @@ if ($res == false) {
 		exit;
 	}
 	else {
-
-		echo("Impossible de créer le ticket : Erreur {$mysqli->errno}, {$mysqli->error}<br/>");
+		echo "Impossible de créer le ticket.<br/>";
+		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 		exit;
 	}
 	

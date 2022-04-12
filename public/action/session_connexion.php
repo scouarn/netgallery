@@ -3,14 +3,6 @@
 
 
 
-function done() {
-	if (isset($mysqli)) $mysqli->close();
-	echo "<a href='../admin_acceuil.php'>Cliquez pour être redirigé.<a/>";
-	// header("Location:admin_acceuil.php");
-	exit;
-}
-
-
 if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 
 	$login = htmlspecialchars(addslashes($_POST['pseudo']));
@@ -19,7 +11,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 }
 else {
 	echo "Login ou mot de passe manquant.</br>";
-	done();
+	exit;
 }
 
 
@@ -39,11 +31,9 @@ $query = "SELECT * FROM T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-
-	echo("Erreur SQL : ");
-	echo ("Errno: " . $mysqli->errno . "<br/>");
-	echo ("Error: " . $mysqli->error . "<br/>");
-	done();
+	echo "Connexion échouée.<br/>"
+	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+	exit;
 }
 
 
@@ -53,15 +43,13 @@ elseif ($row = $res->fetch_assoc()) {
 	$_SESSION['login'] = $row['cpt_login'];
 	$_SESSION['role']  = $row['pro_role'];
 
-	echo "Connexion réussie.<br/>";
-	echo "Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
-	$mysqli->close();
-	header("Location:../admin_acceuil.php");
-
+	echo "Connexion réussie.<br/>Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
+	exit;
 }
 else {
-	echo "Login ou mot de passe incorrect.<br/>";
-	done();
+	echo "Login ou mot de passe incorrect : votre compte n'est peut-être pas activé.<br/>";
+	exit;
 }
-
+	
+	$mysqli->close();
 ?>

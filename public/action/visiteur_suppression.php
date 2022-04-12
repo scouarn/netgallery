@@ -28,11 +28,22 @@ $query = "DELETE FROM T_VISITEUR_VIS
           WHERE vis_id = '{$_POST['id']}';
          ";
 
+
 // echo "{$query}</br>";
 $res = $mysqli->query($query);
 
+if ($res == false) {
+    echo "Impossible de supprimer le visiteur.<br/>";
+    echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+    exit;
+}
+else {
+    echo "Compte activé.<br/>";
+    exit;
+}
+
 
 $mysqli->close();
-header("Location:../admin_visiteurs.php");
+
 
 ?>

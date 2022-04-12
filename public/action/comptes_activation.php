@@ -23,8 +23,17 @@ $query = "UPDATE T_PROFIL_PRO
 
 // echo "{$query}</br>";
 $res = $mysqli->query($query);
-header("Location:../admin_acceuil.php");
-	
+
+if ($res == false) {
+	echo "Impossible d'activer le compte.<br/>";
+	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+	exit;
+}
+else {
+	echo "Compte activé.<br/>";
+	exit;
+}
+
 $mysqli->close();
 
 ?>
