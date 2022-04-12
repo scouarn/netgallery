@@ -32,7 +32,7 @@
 	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
 		<div>
 			<label for="mdp">Mot de passe ticket</label>
-			<input required  title="15 caractères : (a-z A-Z 0-9 ou _)" type="text" name="mdp" />
+			<input required  title="15 caractères : (a-z A-Z 0-9 + et /)" type="text" name="mdp" />
 		</div>
 
 		<div>
@@ -43,11 +43,11 @@
 
 	<br>
 
-	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
+	<form id="ajout_com" action="action/visiteur_creation_rand.php" method="post">
 
 		<div>
-			<label for="mdp">Nombre de tickets à générer</label>
-			<input type="number" value=1 min=1>
+			<label for="n">Nombre de tickets à générer</label>
+			<input type="number" value=1 min=1 name="n">
 		</div>
 
 		<div>

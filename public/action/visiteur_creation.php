@@ -2,7 +2,6 @@
 
 <?php 
 
-include "debug.php";
 
 session_start();
 if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
@@ -11,7 +10,7 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 
 if (isset($_POST['mdp'])) {
 
-	if (preg_match("/[a-zA-Z0-9_]{15}/", $_POST['mdp'])) {
+	if (preg_match("/[a-zA-Z0-9/+]{15}/", $_POST['mdp'])) {
 	   $mdp = $_POST['mdp'];
 	}
 	else {
