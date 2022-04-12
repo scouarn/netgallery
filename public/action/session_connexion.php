@@ -1,7 +1,6 @@
 
 <?php 
 
-include "../action/debug.php";
 
 
 function done() {

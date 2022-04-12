@@ -21,12 +21,12 @@
 
 		<div>
 			<label for="pseudo">Pseudo</label>
-			<input type="text" name="pseudo" />
+			<input required type="text" name="pseudo" />
 		</div>
 
 		<div>
 			<label for="mdp">Mot de passe</label>
-			<input type="password" name="mdp" />
+			<input required type="password" name="mdp" />
 		</div>
 
 		<div>
@@ -41,32 +41,32 @@
 
 		<div>
 			<label for="pseudo">Pseudo</label>
-			<input type="text" name="pseudo" />
+			<input required type="text" name="pseudo" />
 		</div>
 
 		<div>
 			<label for="mdp">Mot de passe</label>
-			<input type="password" name="mdp" />
+			<input required type="password" name="mdp" />
 		</div>
 
 		<div>
 			<label for="mdp_conf">Confirmation du mot de passe</label>
-			<input type="password" name="mdp_conf" />
+			<input required type="password" name="mdp_conf" />
 		</div>
 
 		<div>
 			<label for="nom">Nom</label>
-			<input type="text" name="nom" />
+			<input required type="text" name="nom" />
 		</div>
 
 		<div>
 			<label for="prenom">Prénom</label>
-			<input type="text" name="prenom" />
+			<input required type="text" name="prenom" />
 		</div>
 
 		<div>
 			<label for="mail">Email</label>
-			<input type="email" name="mail" />
+			<input required type="email" name="mail" />
 		</div>
 
 

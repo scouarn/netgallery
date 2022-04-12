@@ -59,26 +59,26 @@
 	<form id="ajout_com" action="action/visiteur_commentaire.php" method="post">
 		<div>
 			<label for="mdp">Mot de passe ticket</label>
-			<input type="password" name="mdp" />
+			<input required type="password" name="mdp" />
 		</div>
 
 		<div>
 			<label for="nom">Nom</label>
-			<input type="text" name="nom" />
+			<input required type="text" name="nom" />
 		</div>
 
 		<div>
 			<label for="prenom">Prénom</label>
-			<input type="text" name="prenom" />
+			<input required type="text" name="prenom" />
 		</div>
 
 		<div>
 			<label for="mail">Email</label>
-			<input type="email" name="mail" />
+			<input required type="email" name="mail" />
 		</div>
 
 		<div>
-			<textarea rows=5 cols=40 name="comment"></textarea>
+			<textarea required rows=5 cols=40 name="comment"></textarea>
 		</div>
 
 
