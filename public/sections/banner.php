@@ -1,5 +1,11 @@
+<script type="text/javascript">
+hide_elem = e => {e.style.display = "None";};
+</script>
+
 
 <div class="banner">
+	
+
 
 	<div class="banner-buttons">
 		<a class="banner-item card" href="index.php"><h1>Net'Gallery</h1></a>
@@ -30,7 +36,7 @@
 	<?php 
 
 	if (isset($_GET['note'])) {
-		echo "<div class='note'>{$_GET['note']}</div>";
+		echo "<div onclick='hide_elem(this);' class='note'>{$_GET['note']}</div>";
 	}
 
 	?>

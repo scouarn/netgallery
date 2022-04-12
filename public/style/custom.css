@@ -57,12 +57,21 @@ form select, input,  {
 .note {
 	padding: 5px;
 	margin-top: 10px;
+
 	outline: solid #ff7777;
 	outline-width: 2px;	
-	text-align: center;
 	background-color: #77ff77;
+
+	text-align: center;
+	cursor: pointer;
+
+	animation: fade_out 0.5s ease-in;
 }
 
+@keyframes fade_out {
+	  0% {opacity:  0;}
+	100% {opacity:  1;}
+} 
 
 .section-title {
 	margin-top: 2em;
