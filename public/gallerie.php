@@ -10,7 +10,7 @@
 <?php 
 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 
 	$query = "SELECT * FROM T_OEUVRE_OVR;";
 	$res = $mysqli->query($query);

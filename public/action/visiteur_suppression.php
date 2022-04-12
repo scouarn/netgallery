@@ -12,7 +12,7 @@ if (!isset($_POST['id'])) {
 }
 
 
-include "../scripts/connexion_bdd.php";
+include "../action/connexion_bdd.php";
 
 
 $query = "DELETE FROM T_COMMENTAIRE_COM

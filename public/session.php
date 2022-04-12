@@ -8,7 +8,7 @@
 <body>
 <?php 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 ?>
 
 
@@ -17,7 +17,7 @@
 
 	<h2 class="section-title">Connexion</h2>
 
-	<form action="scripts/session_connexion.php" method="post">
+	<form action="action/session_connexion.php" method="post">
 
 		<div>
 			<label for="pseudo">Pseudo</label>
@@ -37,7 +37,7 @@
 
 	<h2 class="section-title">Inscription</h2>
 
-	<form action="scripts/session_inscription.php" method="post">
+	<form action="action/session_inscription.php" method="post">
 
 		<div>
 			<label for="pseudo">Pseudo</label>

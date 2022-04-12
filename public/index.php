@@ -10,7 +10,7 @@
 <?php 
 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 ?>
 
 <div class="content">

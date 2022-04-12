@@ -10,7 +10,7 @@
 <?php 
 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 
 	$query = "SELECT * FROM T_EXPOSANT_EXP;";
 	$res = $mysqli->query($query);

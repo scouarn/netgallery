@@ -10,7 +10,7 @@
 <?php 
 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 ?>
 
 <div class="content">
@@ -56,7 +56,7 @@
 
 	<h2 class="section-title">Ajouter un avis</h2>
 
-	<form id="ajout_com" action="scripts/visiteur_commentaire.php" method="post">
+	<form id="ajout_com" action="action/visiteur_commentaire.php" method="post">
 		<div>
 			<label for="mdp">Mot de passe ticket</label>
 			<input type="password" name="mdp" />

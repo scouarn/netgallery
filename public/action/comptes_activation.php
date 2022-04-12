@@ -12,7 +12,7 @@ if (!isset($_POST['login']) || !isset($_POST['valid'])) {
 }
 
 
-include "../scripts/connexion_bdd.php";
+include "../action/connexion_bdd.php";
 
 
 $query = "UPDATE T_PROFIL_PRO

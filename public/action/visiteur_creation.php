@@ -23,7 +23,7 @@ else {
 }
 
 
-include "../scripts/connexion_bdd.php";
+include "../action/connexion_bdd.php";
 
 
 

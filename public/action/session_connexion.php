@@ -1,7 +1,7 @@
 
 <?php 
 
-include "../scripts/debug.php";
+include "../action/debug.php";
 
 
 function done() {
@@ -26,7 +26,7 @@ else {
 
 
 
-include "../scripts/connexion_bdd.php";
+include "../action/connexion_bdd.php";
 
 $query = "SELECT * FROM T_PROFIL_PRO 
           JOIN T_COMPTE_CPT USING(cpt_login) 

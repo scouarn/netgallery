@@ -16,7 +16,7 @@
 <body>
 <?php 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 ?>
 
 
@@ -106,7 +106,7 @@
 				echo "<td style='background-color:{$color};'>";
 				echo "{$row['pro_valid']}";
 
-				echo "<form class='mini-form' action='scripts/comptes_activation.php' method='post'>
+				echo "<form class='mini-form' action='action/comptes_activation.php' method='post'>
 				      <input name='login' type='hidden' value='{$row['cpt_login']}'>
 				      <input name='valid' type='hidden' value='{$valid}'>
 				      <input type='submit' value='{$text}'>

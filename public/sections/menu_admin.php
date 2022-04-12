@@ -8,6 +8,6 @@
 		<button>Visiteurs</button>
 </a>
 
-<a href="scripts/session_destroy.php">
+<a href="action/session_destroy.php">
 	<button>Déconnexion</button>
 </a>

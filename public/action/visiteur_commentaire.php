@@ -58,7 +58,7 @@ else {
 
 
 
-include "../scripts/connexion_bdd.php";
+include "../action/connexion_bdd.php";
 
 $query = "SELECT vis_id
           FROM T_VISITEUR_VIS

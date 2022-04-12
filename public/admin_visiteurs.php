@@ -16,7 +16,7 @@
 <body>
 <?php 
 	include 'sections/banner.php';
-	include 'scripts/connexion_bdd.php';
+	include 'action/connexion_bdd.php';
 ?>
 
 
@@ -29,7 +29,7 @@
 
 	<h2 class='section-title'>Générer un ticket</h2>
 
-	<form id="ajout_com" action="scripts/visiteur_creation.php" method="post">
+	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
 		<div>
 			<label for="mdp">Mot de passe ticket</label>
 			<input pattern=".{15}" title="15 caractères" type="text" name="mdp" />
@@ -43,7 +43,7 @@
 
 	<br>
 
-	<form id="ajout_com" action="scripts/visiteur_creation.php" method="post">
+	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
 
 		<div>
 			<label for="mdp">Nombre de tickets à générer</label>
@@ -100,7 +100,7 @@
 
 				echo "<td>";
 
-				echo "<form class='mini-form' action='scripts/visiteur_suppression.php' method='post'>
+				echo "<form class='mini-form' action='action/visiteur_suppression.php' method='post'>
 				     <input name='id' type='hidden' value='{$row['vis_id']}'>
 				     <input type='submit' value='Supprimer'>
 				     </form>
