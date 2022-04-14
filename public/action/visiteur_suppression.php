@@ -2,14 +2,15 @@
 
 <?php 
 
+include 'redirect_note.php';
+
 session_start();
 if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 	header("Location:../session.php");
 }
 
 if (!isset($_POST['id'])) {
-    echo "ID visiteur incorrect<br/>";
-    exit;
+    redirect_note("../admin_visiteurs.php", "Visiteur incorrect.");
 }
 
 
@@ -34,13 +35,11 @@ $query = "DELETE FROM T_VISITEUR_VIS
 $res = $mysqli->query($query);
 
 if ($res == false) {
-    echo "Impossible de supprimer le visiteur.<br/>";
-    echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-    exit;
+    // echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+    redirect_note("../admin_visiteurs.php", "Impossible de supprimer le visiteur.");
 }
 else {
-    echo "Visiteur supprimé.<br/>";
-    exit;
+    redirect_note("../admin_visiteurs.php", "Visiteur supprimé.");
 }
 
 

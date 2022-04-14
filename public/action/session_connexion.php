@@ -1,5 +1,7 @@
 
-<?php 
+<?php
+
+include "redirect_note.php";
 
 if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 
@@ -8,8 +10,7 @@ if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
 
 }
 else {
-	echo "Login ou mot de passe manquant.</br>";
-	exit;
+	redirect_note("../session.php", "Login ou mot de passe manquant.");
 }
 
 
@@ -29,9 +30,8 @@ $query = "SELECT * FROM T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	echo "Connexion échouée.<br/>";
-	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-	exit;
+	// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+	redirect_note("../session.php", "Connexion échouée.");
 }
 
 
@@ -41,12 +41,10 @@ elseif ($row = $res->fetch_assoc()) {
 	$_SESSION['login'] = $row['cpt_login'];
 	$_SESSION['role']  = $row['pro_role'];
 
-	echo "Connexion réussie. Bienvenue {$row['cpt_login']} ({$row['pro_role']}).<br/>";
-	exit;
+	redirect_note("../admin_acceuil.php", "Connexion réussie. Bienvenue {$row['cpt_login']} ({$row['pro_role']}).");
 }
 else {
-	echo "Login ou mot de passe incorrect : votre compte n'est peut-être pas activé.<br/>";
-	exit;
+	redirect_note("../session.php", "Login ou mot de passe incorrect : votre compte n'est peut-être pas activé.");
 }
 	
 	$mysqli->close();

@@ -1,35 +1,33 @@
 <?php 
 
+include "redirect_note.php";
+
 $inputs = array();
 
 if (isset($_POST['pseudo'])) {
 	$inputs['pseudo'] = htmlspecialchars(addslashes($_POST['pseudo']));
 }
 else {
-	echo "Le pseudo ne peut pas être vide.<br/>";
-	exit;
+	redirect_note("../session.php", "Le pseudo ne peut pas être vide.");
 }
 
 if (isset($_POST['mdp'])) {
 	$inputs['mdp'] = htmlspecialchars(addslashes($_POST['mdp']));
 }
 else {
-	echo "Le mot de passe ne peut pas être vide.<br/>";
-	exit;
+	redirect_note("../session.php", "Le mot de passe ne peut pas être vide.";
 }
 
 if (isset($_POST['mdp_conf'])) {
 	$mdp_conf = htmlspecialchars(addslashes($_POST['mdp_conf']));
 
 	if($mdp_conf != $inputs['mdp'])	{
-		echo "Les mots de passe sont différents.<br/>";
-		exit;
+		redirect_note("../session.php", "Les mots de passe sont différents.");
 	}
 
 }
 else {
-	echo "Veuillez confirmer votre mot de passe.<br/>";
-	exit;
+	redirect_note("../session.php", "Veuillez confirmer votre mot de passe.");
 }
 
 
@@ -37,32 +35,28 @@ if (isset($_POST['nom'])) {
 	$inputs['nom'] = htmlspecialchars(addslashes($_POST['nom']));
 }
 else {
-	echo "Le nom ne peut pas être vide.<br/>";
-	exit;
+	redirect_note("../session.php", "Le nom ne peut pas être vide.");
 }
 
 if (isset($_POST['prenom'])) {
 	$inputs['prenom'] = htmlspecialchars(addslashes($_POST['prenom']));
 }
 else {
-	echo "Le prénom ne peut pas être vide.<br/>";
-	exit;
+	redirect_note("../session.php", "Le prénom ne peut pas être vide.");
 }
 
 if (isset($_POST['mail'])) {
 	$inputs['mail'] = htmlspecialchars(addslashes($_POST['mail']));
 }
 else {
-	echo "L'adresse email ne peut pas être vide.<br/>";
-	exit;
+	redirect_note("../session.php", "L'adresse email ne peut pas être vide.");
 }
 
 if (isset($_POST['role'])) {
 	$inputs['role'] = htmlspecialchars(addslashes($_POST['role']));
 }
 else {
-	echo "Vous devez choisir un rôle.<br/>";
-	exit;
+	redirect_note("../session.php", "Vous devez choisir un rôle.");
 }
 
 
@@ -80,17 +74,15 @@ $query = "INSERT INTO T_COMPTE_CPT VALUES('{$inputs['pseudo']}', MD5('{$inputs['
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	
-	echo "Impossible de créer le compte.<br/>";
 
 	/* erreur unicité clé primaire */
 	if ($mysqli->errno == 1062) {
-		echo "Ce pseudo est déjà utilisé !<br/>";
+		redirect_note("../session.php", "Ce pseudo est déjà utilisé !");
 	}
 	else {
-		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		redirect_note("../session.php", "Impossible de créer le compte.");
 	}
-	exit;
 
 }
 
@@ -110,28 +102,23 @@ $query = "INSERT INTO T_PROFIL_PRO VALUES(
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	echo "Impossible de créer le profil.<br/>";
-	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-
+	// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 
 	$query = "DELETE FROM T_COMPTE_CPT WHERE cpt_login = '{$inputs['pseudo']}';";
 	// echo "{$query}<br/>";
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo "Impossible de supprimer le compte créé, veillez contacter un administrateur.<br/>";
-		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-		exit;
+		// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		redirect_note("../session.php", "Erreur lors de la création du profil : impossible de supprimer le compte créé, veillez contacter un administrateur.");
 	}
 	else {
-		echo "Compte supprimé.<br/>";	
-		exit;
+		redirect_note("../session.php", "Impossible de créer le profil.");
 	}
 	
 }
 else {
-	echo "Inscription réussie. Votre compte n'est pas encore activé.<br/>";
-	exit;
+	redirect_note("../session.php", "Inscription réussie. Votre compte n'est pas encore activé.";
 }
 
 $mysqli->close();

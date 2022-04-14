@@ -26,14 +26,18 @@ form select, input,  {
 	padding: 0;
 	width: 100%;
 
+	background-color: white;
+	
+}
+
+
+.banner-buttons {
+	width: 100%;
 	display: table;
 	table-layout: fixed;
 	text-align: center;
-	
-	background-color: white;
 	box-shadow: 0px 2px 10px #CCCCCC;
 }
-
 
 .banner-item {
 	display: table-cell;
@@ -49,6 +53,25 @@ form select, input,  {
 	cursor: pointer;
 }
 
+
+.note {
+	padding: 5px;
+	margin-top: 10px;
+
+	outline: solid #ff7777;
+	outline-width: 2px;	
+	background-color: #77ff77;
+
+	text-align: center;
+	cursor: pointer;
+
+	animation: fade_out 0.5s ease-in;
+}
+
+@keyframes fade_out {
+	  0% {opacity:  0;}
+	100% {opacity:  1;}
+} 
 
 .section-title {
 	margin-top: 2em;
@@ -112,3 +135,4 @@ form select, input,  {
 	display: inline;
 	margin-left: 1em;	
 }
+

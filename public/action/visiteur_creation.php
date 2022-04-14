@@ -1,7 +1,7 @@
 
 
 <?php 
-
+include 'redirect_note.php';
 
 session_start();
 if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
@@ -10,12 +10,11 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 
 if (isset($_POST['mdp'])) {
 
-	if (preg_match("/[a-zA-Z0-9/+]{15}/", $_POST['mdp'])) {
+	if (preg_match("/[a-zA-Z0-9\/+]{15}/i", $_POST['mdp'])) {
 	   $mdp = $_POST['mdp'];
 	}
 	else {
-		echo "Format mdp incorrect<br/>"; // hacked html / made up request
-		exit;
+		redirect_note("../admin_visiteurs.php", "Format mdp incorrect.");
 	}
 
 }
@@ -36,19 +35,16 @@ if ($res == false) {
 
 	/* erreur unicité */
 	if ($mysqli->errno == 1062) {
-		echo "Ce ticket existe déjà !<br/>";
-		exit;
+		redirect_note("../admin_visiteurs.php", "Ce ticket existe déjà !");
 	}
 	else {
-		echo "Impossible de créer le ticket.<br/>";
-		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-		exit;
+		// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		redirect_note("../admin_visiteurs.php", "Impossible de créer le ticket.");
 	}
 	
 }
 else {
-	echo "Ajout OK</br>";
-	exit;
+	redirect_note("../admin_visiteurs.php", "Ticket visiteur créé !");
 }
 
 $mysqli->close();

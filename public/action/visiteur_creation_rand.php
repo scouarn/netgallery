@@ -2,7 +2,7 @@
 
 <?php 
 
-include "debug.php";
+include 'redirect_note.php';
 
 session_start();
 if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
@@ -30,12 +30,11 @@ for ($i = 0; $i < $n; $i++) {
 	       ";
 
 	// echo "{$query}</br>";
-
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo "Impossible de créer le ticket.";
-		echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+		redirect_note("../admin_visiteurs.php", "$added tickets créés.", "Impossible de créer le ticket.");
 	}
 	else {
 		echo "Ajout OK<br/>";
@@ -44,7 +43,7 @@ for ($i = 0; $i < $n; $i++) {
 
 }
 
-echo "$added tickets créés.<br/>";
+redirect_note("../admin_visiteurs.php", "$added tickets créés.");
 $mysqli->close();
 
 ?>

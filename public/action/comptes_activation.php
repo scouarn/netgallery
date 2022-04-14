@@ -2,14 +2,16 @@
 
 <?php 
 
+include "redirect_note.php";
+
 session_start();
 if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 	header("Location:../session.php");
 }
 
 if (!isset($_POST['login']) || !isset($_POST['valid'])) {
-	echo "Paramètres invalides.<br/>";
-	exit;
+
+	redirect_note("../admin_acceuil.php", "Paramètres invalides.");
 }
 
 
@@ -26,12 +28,16 @@ $query = "UPDATE T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	echo "Impossible d'activer ou de désactiver le profil.<br/>";
-	echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-	exit;
+	
+	//echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
+
+	redirect_note("../admin_acceuil.php", "Impossible d'activer ou de désactiver le profil.");
+
 }
 else {
-	echo $_POST['valid'] == "A" ? "Profil activé.<br/>" : "Profil désactivé.<br/>";
+
+	redirect_note("../admin_acceuil.php", $_POST['valid'] == "A" ? "Profil activé." : "Profil désactivé.");
+
 	exit;
 }
 
