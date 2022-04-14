@@ -22,6 +22,7 @@ $added = 0;
 
 for ($i = 0; $i < $n; $i++) {
 
+	// the hash is just there to shuffle the id
 	$mdp = substr(base64_encode(hash("md5", uniqid(), true)), 0, 15);
 
 	$query = "INSERT INTO T_VISITEUR_VIS VALUES
