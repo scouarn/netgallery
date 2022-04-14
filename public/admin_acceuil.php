@@ -1,21 +1,17 @@
-<?php
-	session_start();
-	if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
-		header("Location:session.php");
-	}
-?>
-
-
 <!DOCTYPE html>
 <html>
 
 <?php include 'sections/head.php'; ?>
 
 
-
 <body>
 <?php 
 	include 'sections/banner.php';
+	
+	if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
+		header("Location:session.php");
+	}
+
 	include 'action/connexion_bdd.php';
 ?>
 
