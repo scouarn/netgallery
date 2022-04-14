@@ -48,11 +48,6 @@ form select, input,  {
 	font-size: large;
 }
 
-.card:hover, .card:focus {
-	background-color: #CCCCCC;
-	cursor: pointer;
-}
-
 
 .note {
 	padding: 5px;
@@ -86,6 +81,11 @@ form select, input,  {
 }
 
 
+.card:hover, .card:focus {
+	background-color: #CCCCCC;
+	cursor: pointer;
+}
+
 .mosaic {
 	display: grid;
 	grid-column-gap: 10px;
@@ -98,11 +98,14 @@ form select, input,  {
 
 .mosaic-tile {
 	text-decoration-line: none;
-	display: block
-
+	display: flex;
+	flex-direction: column;
+	align-content: space-between;
+	justify-content: center;
 }
 
 .mosaic-tile img {
+	margin: auto;
 	margin-top: 2em;
 	max-width: 80%;
 }
