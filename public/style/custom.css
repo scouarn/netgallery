@@ -2,20 +2,6 @@ body {
 	font-size: 14pt;
 }
 
-form {
-  width: 50%;
-  display: block;
-  margin: auto;
-  text-align: right;
-}
-
-form div {
-  padding: 2px;
-}
-
-form select, input,  {
-	width: 50%;
-}
 
 
 .banner {
@@ -139,3 +125,22 @@ form select, input,  {
 	margin-left: 1em;	
 }
 
+.form {
+  margin: auto;
+  width: 50%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row-gap: 10px;
+}
+
+.form label {
+	text-align: left;
+}
+
+.form input[type="submit"] {
+	grid-area: auto / 2;
+}
+
+.form textarea {
+	grid-area: auto / 1 / auto / span 2;
+}

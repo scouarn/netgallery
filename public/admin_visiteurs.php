@@ -22,32 +22,21 @@
 
 	<h2 class='section-title'>Générer un ticket</h2>
 
-	<form id="ajout_com" action="action/visiteur_creation.php" method="post">
-		<div>
+	<form class="form" action="action/visiteur_creation.php" method="post">
 			<label for="mdp">Mot de passe ticket</label>
 			<input required  pattern="[a-zA-Z0-9/+]{15}" title="15 caractères : (a-z A-Z 0-9 + et /)" type="text" name="mdp" />
-		</div>
 
-		<div>
 			<input type="submit" value="Créer un ticket">
-		</div>
-
 	</form>
 
 
 	<h2 class='section-title'>Générer plusieurs tickets</h2>
 
-	<form id="ajout_com" action="action/visiteur_creation_rand.php" method="post">
-
-		<div>
+	<form class="form" action="action/visiteur_creation_rand.php" method="post">
 			<label for="n">Nombre de tickets à générer</label>
-			<input type="number" value=1 min=1 max=100 name="n">
-		</div>
+			<input required type="number" value=1 min=1 max=100 name="n">
 
-		<div>
 			<input type="submit" value="Créer avec MDP aléatoire">
-		</div>
-
 	</form>
 
 

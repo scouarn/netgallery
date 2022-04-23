@@ -10,7 +10,6 @@ if(!isset($_SESSION['login']) || !isset($_SESSION['role'])) {
 }
 
 if (!isset($_POST['login']) || !isset($_POST['valid'])) {
-
 	redirect_note("../admin_acceuil.php", "Paramètres invalides.");
 }
 
@@ -37,8 +36,6 @@ if ($res == false) {
 else {
 
 	redirect_note("../admin_acceuil.php", $_POST['valid'] == "A" ? "Profil activé." : "Profil désactivé.");
-
-	exit;
 }
 
 $mysqli->close();

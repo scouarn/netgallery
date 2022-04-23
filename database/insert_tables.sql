@@ -5,10 +5,10 @@ INSERT INTO T_COMPTE_CPT VALUES ('vmarc', MD5('motdepasse'));
 INSERT INTO T_PROFIL_PRO VALUES ('vmarc', 'Marc', 'Valérie', 'vmarc@univ-brest.fr', 'A', 'A', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('admin', MD5('admin'));
-INSERT INTO T_PROFIL_PRO VALUES ('admin', 'Admin', 'Admin', 'admin@netgallery.localhast', 'A', 'A', NOW());
+INSERT INTO T_PROFIL_PRO VALUES ('admin', 'Admin', 'Admin', 'admin@netgallery.localhost', 'A', 'A', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('gEstionnaire', '98abb15e560057e55e4e99187702ed4e');
-INSERT INTO T_PROFIL_PRO VALUES ('gEstionnaire', 'Estionnaire', 'Georges', 'ge@netgallery.localhast', 'A', 'A', NOW());
+INSERT INTO T_PROFIL_PRO VALUES ('gEstionnaire', 'Estionnaire', 'Georges', 'ge@netgallery.localhost', 'A', 'A', NOW());
 
 INSERT INTO T_COMPTE_CPT VALUES ('conservateur', MD5('mdp123'));
 INSERT INTO T_PROFIL_PRO VALUES ('conservateur', 'Thine', 'Clément', 'clement.thine@netgallery.localhost', 'A', 'O', NOW());

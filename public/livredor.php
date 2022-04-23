@@ -56,35 +56,22 @@
 
 	<h2 class="section-title">Ajouter un avis</h2>
 
-	<form id="ajout_com" action="action/visiteur_commentaire.php" method="post">
-		<div>
-			<label for="mdp">Mot de passe ticket</label>
-			<input required type="password" name="mdp" />
-		</div>
-
-		<div>
-			<label for="nom">Nom</label>
-			<input required type="text" name="nom" />
-		</div>
-
-		<div>
-			<label for="prenom">Prénom</label>
-			<input required type="text" name="prenom" />
-		</div>
-
-		<div>
-			<label for="mail">Email</label>
-			<input required type="email" name="mail" />
-		</div>
-
-		<div>
-			<textarea required rows=5 cols=40 name="comment"></textarea>
-		</div>
-
-
-		<div>
-			<input type="submit" value="Envoyer">
-		</div>
+	<form class="form" id="ajout_com" action="action/visiteur_commentaire.php" method="post">
+		<label for="mdp">Mot de passe ticket</label>
+		<input required type="password" name="mdp" />
+		
+		<label for="nom">Nom</label>
+		<input required type="text" name="nom" />
+		
+		<label for="prenom">Prénom</label>
+		<input required type="text" name="prenom" />
+		
+		<label for="mail">Email</label>
+		<input required type="email" name="mail" />
+		
+		<textarea required rows=5 cols=40 name="comment"></textarea>
+		<input type="submit" value="Envoyer">
+		
 
 	</form>
 

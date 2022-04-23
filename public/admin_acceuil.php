@@ -50,6 +50,24 @@
 	</table>
 
 
+	<h2 class="section-title">Modification du mot de passe</h2>
+
+	<form class="form" action="action/comptes_passwd.php" method="post">
+
+			<label for="mdp">Mot de passe actuel</label>
+			<input required type="password" name="mdp" />
+
+			<label for="mdp_new">Nouveau mot de passe</label>
+			<input required type="password" name="mdp_new" />
+
+			<label for="mdp_conf">Confirmation</label>
+			<input required type="password" name="mdp_conf" />
+
+			<input type="submit" value="Envoyer">
+	</form>
+
+
+
 	<?php if ($_SESSION['role'] == 'A') {
 
 		echo "<h2 class='section-title'>Utilisateurs</h2>";
