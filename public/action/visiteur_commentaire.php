@@ -48,7 +48,7 @@ include "../action/connexion_bdd.php";
 $query = "SELECT vis_id
           FROM T_VISITEUR_VIS
           WHERE vis_mdp = '{$inputs['mdp']}'
-          AND TIMESTAMPADD(HOUR, 2, vis_date) > NOW()
+          AND TIMESTAMPADD(HOUR, 3, vis_date) > NOW()
           EXCEPT
           SELECT vis_id FROM T_COMMENTAIRE_COM;
         ";
