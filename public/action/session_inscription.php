@@ -1,7 +1,6 @@
 <?php 
 
 include "redirect_note.php";
-include "debug.php";
 
 
 if (!isset($_POST['mdp'])    || !isset($_POST['mdp_conf'])
@@ -11,7 +10,6 @@ if (!isset($_POST['mdp'])    || !isset($_POST['mdp_conf'])
 
 	redirect_note("../livredor.php", "Paramètres invalides.");
 }
-
 include "connexion_bdd.php";
 
 $mdp      = $mysqli->real_escape_string($_POST['mdp']);
@@ -50,6 +48,7 @@ if ($res == false) {
 }
 
 
+
 // ==================
 // CREATION DU PROFIL
 // ==================
@@ -66,8 +65,7 @@ $res = $mysqli->query($query);
 if ($res == false) {
 	// echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
 
-	$query = "DELETE FROM T_COMPTE_CPT WHERE cpt_login = '{$inputs['pseudo']}';";
-
+	$query = "DELETE FROM T_COMPTE_CPT WHERE cpt_login = '{$pseudo}';";
 	// echo "{$query}<br/>";
 	$res = $mysqli->query($query);
 
@@ -81,9 +79,8 @@ if ($res == false) {
 	
 }
 else {
-	redirect_note("../session.php", "Inscription réussie. Votre compte n'est pas encore activé.";
+	redirect_note("../session.php", "Inscription réussie. Votre compte n'est pas encore activé.");
 }
 
 $mysqli->close();
-
 ?>
