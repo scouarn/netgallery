@@ -16,10 +16,13 @@ if (!isset($_POST['login']) || !isset($_POST['valid'])) {
 
 include "../action/connexion_bdd.php";
 
+$valid = $mysqli->real_escape_string($_POST['valid']);
+$login = $mysqli->real_escape_string($_POST['login']);
+
 
 $query = "UPDATE T_PROFIL_PRO
-          SET pro_valid = '{$_POST['valid']}'
-          WHERE cpt_login = '{$_POST['login']}';
+          SET pro_valid = '{$valid}'
+          WHERE cpt_login = '{$login}';
          ";
 
 
@@ -27,15 +30,13 @@ $query = "UPDATE T_PROFIL_PRO
 $res = $mysqli->query($query);
 
 if ($res == false) {
-	
 	//echo "Erreur SQL : {$mysqli->errno} {$mysqli->error}<br/>";
-
 	redirect_note("../admin_acceuil.php", "Impossible d'activer ou de désactiver le profil.");
-
 }
 else {
-
-	redirect_note("../admin_acceuil.php", $_POST['valid'] == "A" ? "Profil activé." : "Profil désactivé.");
+	redirect_note("../admin_acceuil.php", 
+		$valid == "A" ? "Profil activé." 
+		              : "Profil désactivé.");
 }
 
 $mysqli->close();

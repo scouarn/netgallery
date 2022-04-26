@@ -14,16 +14,17 @@ if (!isset($_POST['mdp']) || !isset($_POST['mdp_new']) || !isset($_POST['mdp_con
 	redirect_note("../admin_acceuil.php", "Paramètres invalides.");
 }
 
-$mdp      = htmlspecialchars(addslashes($_POST['mdp']));
-$mdp_new  = htmlspecialchars(addslashes($_POST['mdp_new']));
-$mdp_conf = htmlspecialchars(addslashes($_POST['mdp_conf']));
+
+include "../action/connexion_bdd.php";
+
+$mdp      = $mysqli->real_escape_string($_POST['mdp']);
+$mdp_new  = $mysqli->real_escape_string($_POST['mdp_new']);
+$mdp_conf = $mysqli->real_escape_string($_POST['mdp_conf']);
 
 if($mdp_conf != $mdp_new)	{
 	redirect_note("../admin_acceuil.php", "Les mots de passe sont différents.");
 }
 
-
-include "../action/connexion_bdd.php";
 
 
 

@@ -3,20 +3,16 @@
 
 include "redirect_note.php";
 
-if (isset($_POST['pseudo']) && isset($_POST['mdp'])) {
-
-	$login = htmlspecialchars(addslashes($_POST['pseudo']));
-	$mdp   = htmlspecialchars(addslashes($_POST['mdp']));
-
-}
-else {
+if (!isset($_POST['pseudo']) || !isset($_POST['mdp'])) {
 	redirect_note("../session.php", "Login ou mot de passe manquant.");
 }
 
-
-
-
 include "../action/connexion_bdd.php";
+
+
+$login = $mysqli->real_escape_string($_POST['pseudo']);
+$mdp   = $mysqli->real_escape_string($_POST['mdp']);
+
 
 $query = "SELECT * FROM T_PROFIL_PRO 
           JOIN T_COMPTE_CPT USING(cpt_login) 
@@ -46,6 +42,9 @@ elseif ($row = $res->fetch_assoc()) {
 else {
 	redirect_note("../session.php", "Login ou mot de passe incorrect : votre compte n'est peut-être pas activé.");
 }
-	
-	$mysqli->close();
+
+
+
+$mysqli->close();
+
 ?>

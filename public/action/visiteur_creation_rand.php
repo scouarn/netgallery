@@ -18,11 +18,10 @@ else {
 
 include "../action/connexion_bdd.php";
 
-$added = 0;
+$i = 0;
+while ($i < $n) {
 
-for ($i = 0; $i < $n; $i++) {
-
-	// the hash is just there to shuffle the id
+	// ni sécurisé ni unique
 	$mdp = substr(base64_encode(hash("md5", uniqid(), true)), 0, 15);
 
 	$query = "INSERT INTO T_VISITEUR_VIS VALUES
@@ -37,13 +36,13 @@ for ($i = 0; $i < $n; $i++) {
 		redirect_note("../admin_visiteurs.php", "$added tickets créés.", "Impossible de créer le ticket.");
 	}
 	else {
-		echo "Ajout OK<br/>";
-		$added++;
+		// echo "Ajout OK<br/>";
+		$i++;
 	}
 
 }
 
-redirect_note("../admin_visiteurs.php", "$added tickets créés.");
+redirect_note("../admin_visiteurs.php", "$i tickets créés.");
 $mysqli->close();
 
 ?>

@@ -1,53 +1,27 @@
 <?php 
 include 'redirect_note.php';
 
-$inputs = array();
 
-if ($_POST['mdp']) {
-	$inputs['mdp'] = htmlspecialchars(addslashes($_POST['mdp']));
-}
-else {
-	redirect_note("../livredor.php", "Le mot de passe ne peut pas être vide.");
-}
+if (!isset($_POST['mdp'])    || !isset($_POST['nom']) 
+ || !isset($_POST['prenom']) || !isset($_POST['mail'])
+ || !isset($_POST['comment'])) {
 
-
-if ($_POST['nom']) {
-	$inputs['nom'] = htmlspecialchars(addslashes($_POST['nom']));
+	redirect_note("../livredor.php", "Paramètres invalides.");
 }
-else {
-	redirect_note("../livredor.php", "Le nom ne peut pas être vide.");
-}
-
-if ($_POST['prenom']) {
-	$inputs['prenom'] = htmlspecialchars(addslashes($_POST['prenom']));
-}
-else {
-	redirect_note("../livredor.php", "Le prénom ne peut pas être vide.");
-}
-
-if ($_POST['mail']) {
-	$inputs['mail'] = htmlspecialchars(addslashes($_POST['mail']));
-}
-else {
-	redirect_note("../livredor.php", "L'adresse email ne peut pas être vide.");
-}
-
-if ($_POST['comment']) {
-	$inputs['comment'] = htmlspecialchars(addslashes($_POST['comment']));
-}
-else {
-	redirect_note("../livredor.php", "Le commentaire ne peut pas être vide.");
-}
-
-
-
 
 
 include "../action/connexion_bdd.php";
 
+$mdp     = $mysqli->real_escape_string($_POST['mdp']);
+$nom     = $mysqli->real_escape_string($_POST['nom']);
+$prenom  = $mysqli->real_escape_string($_POST['prenom']);
+$mail    = $mysqli->real_escape_string($_POST['mail']);
+$comment = $mysqli->real_escape_string($_POST['comment']);
+
+
 $query = "SELECT vis_id
           FROM T_VISITEUR_VIS
-          WHERE vis_mdp = '{$inputs['mdp']}'
+          WHERE vis_mdp = '{$mdp}'
           AND TIMESTAMPADD(HOUR, 3, vis_date) > NOW()
           EXCEPT
           SELECT vis_id FROM T_COMMENTAIRE_COM;
@@ -71,9 +45,9 @@ if (empty($row)) {
 $id = $row['vis_id'];
 
 $query = "UPDATE T_VISITEUR_VIS
-          SET vis_nom = '{$inputs['nom']}',
-          	vis_prenom = '{$inputs['prenom']}',
-          	vis_email = '{$inputs['mail']}'
+          SET vis_nom = '{$nom}',
+          	vis_prenom = '{$prenom}',
+          	vis_email = '{$mail}'
           WHERE vis_id = {$id};
         ";
 
@@ -87,7 +61,7 @@ if ($res == false) {
 }
 
 $query = "INSERT INTO T_COMMENTAIRE_COM 
-          VALUES (NULL, NOW(), '{$inputs['comment']}', 'OK', {$id})
+          VALUES (NULL, NOW(), '{$comment}', 'OK', {$id})
         ";
 
 // echo "{$query}<br/>";
