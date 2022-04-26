@@ -33,12 +33,16 @@
 		ORDER BY vis_date DESC;
 	";
 
+	// echo "{$query}</br>";
 	$res = $mysqli->query($query);
 
 	if ($res == false) {
-		echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		$mysqli->close();
+		exit;
 	}
-	else
+
+
 	while ($row = $res->fetch_assoc()) {
 
 		echo "<tr>";

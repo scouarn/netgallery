@@ -20,7 +20,15 @@
 
 	<?php 
 		$query = "SELECT * FROM T_PRESENTATION_PRE;";
+		// echo "{$query}</br>";
 		$res = $mysqli->query($query);
+
+		if ($res == false) {
+			// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+			$mysqli->close();
+			exit;
+		}
+
 		$row = $res->fetch_assoc();
 
 		echo "<p>{$row['pre_titre']}</p>";
@@ -49,7 +57,16 @@
 	<?php 
 
 	$query = "SELECT * FROM T_NEWS_NEW ORDER BY new_date DESC;";
+
+	// echo "{$query}</br>";
 	$res = $mysqli->query($query);
+
+	if ($res == false) {
+		// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		$mysqli->close();
+		exit;
+	}
+
 	
 	while ($row = $res->fetch_assoc()) {
 

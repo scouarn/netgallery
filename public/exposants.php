@@ -13,8 +13,14 @@
 	include 'action/connexion_bdd.php';
 
 	$query = "SELECT * FROM T_EXPOSANT_EXP;";
+	// echo "{$query}</br>";
 	$res = $mysqli->query($query);
 
+	if ($res == false) {
+		// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		$mysqli->close();
+		exit;
+	}
 ?>
 
 <div class="content">

@@ -21,7 +21,16 @@
 	$query = "SELECT * FROM T_OEUVRE_OVR 
               WHERE ovr_id = {$id};";
 
-	$ovr = $mysqli->query($query)->fetch_assoc();
+	// echo "{$query}</br>";
+	$res = $mysqli->query($query);
+
+	if ($res == false) {
+		// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		$mysqli->close();
+		header('Location: gallerie.php');
+	}
+
+	$ovr = $res->fetch_assoc();
 
 	// oeuvre inconnue
 	if (!$ovr) {
@@ -35,7 +44,15 @@
 	          JOIN T_EXPOSANT_EXP USING(exp_id)
 	          WHERE ovr_id = {$id};";
 
+	// echo "{$query}</br>";
 	$exp = $mysqli->query($query);
+
+	if ($exp == false) {
+		// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+		$mysqli->close();
+		exit;
+	}
+	
 ?>
 
 

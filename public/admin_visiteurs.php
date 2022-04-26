@@ -48,56 +48,58 @@
 		          LEFT JOIN T_COMMENTAIRE_COM USING(vis_id)
 		          ORDER BY vis_date DESC;";
 
-
+		// echo "{$query}</br>";
 		$res = $mysqli->query($query);
 
-		if ($res != false) {
-
-			echo "<p>Il y a <b>{$res->num_rows}</b> tickets.";
-
-			echo "<table class='w3-table-all'>
-			      <tr>
-			      <th>Mot de passe</th>
-			      <th>Nom</th>
-			      <th>Prénom</th>
-			      <th>Email</th>
-			      <th>Création</th>
-			      <th>Créateur</th>
-			      <th>Commentaire</th>
-			      <th>Actions</th>
-			      </tr>";
-
-		
-			while ($row = $res->fetch_assoc()) {
-				echo "<tr>";
-
-				echo "<td>{$row['vis_mdp']}   </td>
-				      <td>{$row['vis_nom']}   </td>
-				      <td>{$row['vis_prenom']}</td>
-				      <td>{$row['vis_email']} </td>
-				      <td>{$row['vis_date']}  </td>
-				      <td>{$row['cpt_login']} </td>
-				      <td>{$row['com_text']}  </td>
-					";
-
-
-				echo "<td>";
-
-				echo "<form class='mini-form' action='action/visiteur_suppression.php' method='post'>
-				     <input name='id' type='hidden' value='{$row['vis_id']}'>
-				     <input type='submit' value='Supprimer'>
-				     </form>
-					";
-
-
-				echo "</td>";
-
-				echo "</tr>";
-			}	
-
-			echo "</table>";
-
+		if ($res == false) {
+			// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+			$mysqli->close();
+			exit;
 		}
+
+		echo "<p>Il y a <b>{$res->num_rows}</b> tickets.";
+
+		echo "<table class='w3-table-all'>
+		      <tr>
+		      <th>Mot de passe</th>
+		      <th>Nom</th>
+		      <th>Prénom</th>
+		      <th>Email</th>
+		      <th>Création</th>
+		      <th>Créateur</th>
+		      <th>Commentaire</th>
+		      <th>Actions</th>
+		      </tr>";
+
+	
+		while ($row = $res->fetch_assoc()) {
+			echo "<tr>";
+
+			echo "<td>{$row['vis_mdp']}   </td>
+			      <td>{$row['vis_nom']}   </td>
+			      <td>{$row['vis_prenom']}</td>
+			      <td>{$row['vis_email']} </td>
+			      <td>{$row['vis_date']}  </td>
+			      <td>{$row['cpt_login']} </td>
+			      <td>{$row['com_text']}  </td>
+				";
+
+
+			echo "<td>";
+
+			echo "<form class='mini-form' action='action/visiteur_suppression.php' method='post'>
+			     <input name='id' type='hidden' value='{$row['vis_id']}'>
+			     <input type='submit' value='Supprimer'>
+			     </form>
+				";
+
+
+			echo "</td>";
+
+			echo "</tr>";
+		}	
+
+		echo "</table>";
 	?>
 
 

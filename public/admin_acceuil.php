@@ -28,11 +28,12 @@
 		$query = "SELECT * FROM T_PROFIL_PRO
 		          WHERE cpt_login = '{$_SESSION['login']}'
 		";
-
+		// echo "{$query}</br>";
 		$res = $mysqli->query($query);
 
 		if ($res == false) {
-			echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+			// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+			exit;
 		}
 		else {
 			$row = $res->fetch_assoc();
@@ -71,67 +72,75 @@
 	<?php if ($_SESSION['role'] == 'A') {
 
 		echo "<h2 class='section-title'>Utilisateurs</h2>";
+
 		$query = "SELECT * FROM T_PROFIL_PRO ORDER BY cpt_login;";
+		// echo "{$query}</br>";
 		$res = $mysqli->query($query);
 
-		if ($res != false) { 
+		if ($res == false) { 
+			// echo("Erreur SQL : {$mysqli->errno} : {$mysqli->error}<br/>");
+			$mysqli->close();
+			exit;
+		}
 
-			echo "<p>Il y a <b>{$res->num_rows}</b> profils.";
+		echo "<p>Il y a <b>{$res->num_rows}</b> profils.";
 
-			echo "<table class='w3-table-all'>
-			      <tr>
-			      <th>Login</th>
-			      <th>Nom</th>
-			      <th>Prénom</th>
-			      <th>Email</th>
-			      <th>Rôle</th>
-			      <th>Inscription</th>
-			      <th>Validité</th>
-			      </tr>";
+		echo "<table class='w3-table-all'>
+		      <tr>
+		      <th>Login</th>
+		      <th>Nom</th>
+		      <th>Prénom</th>
+		      <th>Email</th>
+		      <th>Rôle</th>
+		      <th>Inscription</th>
+		      <th>Validité</th>
+		      </tr>";
 
-		
-			while ($row = $res->fetch_assoc()) {
+	
+		while ($row = $res->fetch_assoc()) {
 
-				echo "<tr>";
+			echo "<tr>";
 
-				echo "<td>{$row['cpt_login']}</td>
-				      <td>{$row['pro_nom']}</td>
-				      <td>{$row['pro_prenom']}</td>
-				      <td>{$row['pro_email']}</td>
-				      <td>{$row['pro_role']}</td>
-				      <td>{$row['pro_date']}</td>";
+			echo "<td>{$row['cpt_login']}</td>
+			      <td>{$row['pro_nom']}</td>
+			      <td>{$row['pro_prenom']}</td>
+			      <td>{$row['pro_email']}</td>
+			      <td>{$row['pro_role']}</td>
+			      <td>{$row['pro_date']}</td>";
 
 
-				if ($row['pro_valid'] == 'D') {
-					$color = "#ff7777";
-					$valid = "A";
-					$text  = "activer";
-				}
-				else {
-					$color = "#77ff77";
-					$valid = "D";
-					$text  = "désactiver";
-				}
-
-				echo "<td style='background-color:{$color};'>";
+			if ($row['cpt_login'] == $_SESSION['login']) {
+				echo "<td>{$row['pro_valid']}</td>";
+			}
+			elseif ($row['pro_valid'] == 'D') {
+				echo "<td style='background-color:#ff7777;'>";
 				echo "{$row['pro_valid']}";
 
 				echo "<form class='mini-form' action='action/comptes_activation.php' method='post'>
 				      <input name='login' type='hidden' value='{$row['cpt_login']}'>
-				      <input name='valid' type='hidden' value='{$valid}'>
-				      <input type='submit' value='{$text}'>
+				      <input name='valid' type='hidden' value='A'>
+				      <input type='submit' value='Activer'>
 					";
 
 				echo "</form></td>";
+			}
+			else {
 
+				echo "<td style='background-color:#77ff77;'>";
+				echo "{$row['pro_valid']}";
 
-
-				echo "</tr>";
+				echo "<form class='mini-form' action='action/comptes_activation.php' method='post'>
+				      <input name='login' type='hidden' value='{$row['cpt_login']}'>
+				      <input name='valid' type='hidden' value='D'>
+				      <input type='submit' value='Désactiver'>
+					";
+				echo "</form></td>";
 			}
 
-			echo "</table>";
+			echo "</tr>";
 		}
 
+		echo "</table>";
 
 	}?>
 
