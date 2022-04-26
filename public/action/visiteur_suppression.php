@@ -14,7 +14,7 @@ if (!isset($_POST['id'])) {
 }
 
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 $id = $mysqli->real_escape_string($_POST['id']);
 

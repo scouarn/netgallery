@@ -1,6 +1,8 @@
 <?php 
 
 include "redirect_note.php";
+include "debug.php";
+
 
 if (!isset($_POST['mdp'])    || !isset($_POST['mdp_conf'])
  || !isset($_POST['pseudo']) || !isset($_POST['role'])
@@ -10,8 +12,7 @@ if (!isset($_POST['mdp'])    || !isset($_POST['mdp_conf'])
 	redirect_note("../livredor.php", "Paramètres invalides.");
 }
 
-
-include "../connexion_bdd.php";
+include "connexion_bdd.php";
 
 $mdp      = $mysqli->real_escape_string($_POST['mdp']);
 $mdp_conf = $mysqli->real_escape_string($_POST['mdp_conf']);
@@ -24,7 +25,6 @@ $role     = $mysqli->real_escape_string($_POST['role']);
 if($mdp != $mdp_conf)	{
 	redirect_note("../session.php", "Les mots de passe sont différents.");
 }
-
 
 
 // ==================

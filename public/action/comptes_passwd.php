@@ -15,7 +15,7 @@ if (!isset($_POST['mdp']) || !isset($_POST['mdp_new']) || !isset($_POST['mdp_con
 }
 
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 $mdp      = $mysqli->real_escape_string($_POST['mdp']);
 $mdp_new  = $mysqli->real_escape_string($_POST['mdp_new']);

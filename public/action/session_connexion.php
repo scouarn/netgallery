@@ -7,7 +7,7 @@ if (!isset($_POST['pseudo']) || !isset($_POST['mdp'])) {
 	redirect_note("../session.php", "Login ou mot de passe manquant.");
 }
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 
 $login = $mysqli->real_escape_string($_POST['pseudo']);

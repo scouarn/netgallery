@@ -10,7 +10,7 @@ if (!isset($_POST['mdp'])    || !isset($_POST['nom'])
 }
 
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 $mdp     = $mysqli->real_escape_string($_POST['mdp']);
 $nom     = $mysqli->real_escape_string($_POST['nom']);

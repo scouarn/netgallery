@@ -20,7 +20,7 @@ if (isset($_POST['mdp'])) {
 }
 
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 
 $query = "INSERT INTO T_VISITEUR_VIS VALUES

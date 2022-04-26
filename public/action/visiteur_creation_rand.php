@@ -16,7 +16,7 @@ else {
 	$n = 1;
 }
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 $i = 0;
 while ($i < $n) {

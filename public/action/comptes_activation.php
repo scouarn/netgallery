@@ -14,7 +14,7 @@ if (!isset($_POST['login']) || !isset($_POST['valid'])) {
 }
 
 
-include "../action/connexion_bdd.php";
+include "connexion_bdd.php";
 
 $valid = $mysqli->real_escape_string($_POST['valid']);
 $login = $mysqli->real_escape_string($_POST['login']);
